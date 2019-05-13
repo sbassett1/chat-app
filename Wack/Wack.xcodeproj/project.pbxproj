@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55159EF5228A0C050060B92F /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55159EF3228A0C050060B92F /* SWRevealViewController.m */; };
 		552C372C228A033400E0EE92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C372B228A033400E0EE92 /* AppDelegate.swift */; };
 		552C372E228A033400E0EE92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C372D228A033400E0EE92 /* ViewController.swift */; };
 		552C3731228A033400E0EE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552C372F228A033400E0EE92 /* Main.storyboard */; };
 		552C3733228A033500E0EE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552C3732228A033500E0EE92 /* Assets.xcassets */; };
 		552C3736228A033500E0EE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552C3734228A033500E0EE92 /* LaunchScreen.storyboard */; };
+		635448601005BCFF721790D3 /* Pods_Wack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172129D5A6F2040C37C83A09 /* Pods_Wack.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		172129D5A6F2040C37C83A09 /* Pods_Wack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A9D94278E9360A6943343C6 /* Pods-Wack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wack.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wack/Pods-Wack.release.xcconfig"; sourceTree = "<group>"; };
+		55159EF2228A0C040060B92F /* Wack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wack-Bridging-Header.h"; sourceTree = "<group>"; };
+		55159EF3228A0C050060B92F /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		55159EF4228A0C050060B92F /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		552C3728228A033400E0EE92 /* Wack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		552C372B228A033400E0EE92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		552C372D228A033400E0EE92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +29,7 @@
 		552C3732228A033500E0EE92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		552C3735228A033500E0EE92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		552C3737228A033500E0EE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wack/Pods-Wack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				635448601005BCFF721790D3 /* Pods_Wack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55159EF1228A0BF50060B92F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55159EF4228A0C050060B92F /* SWRevealViewController.h */,
+				55159EF3228A0C050060B92F /* SWRevealViewController.m */,
+				55159EF2228A0C040060B92F /* Wack-Bridging-Header.h */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		552C371F228A033400E0EE92 = {
 			isa = PBXGroup;
 			children = (
+				55159EF1228A0BF50060B92F /* Supporting Files */,
 				552C372A228A033400E0EE92 /* Wack */,
 				552C3729228A033400E0EE92 /* Products */,
+				E5CE7D51808B8E8939B31240 /* Pods */,
+				776142AE6F8E5E19F5E0E218 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +86,23 @@
 			path = Wack;
 			sourceTree = "<group>";
 		};
+		776142AE6F8E5E19F5E0E218 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				172129D5A6F2040C37C83A09 /* Pods_Wack.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5CE7D51808B8E8939B31240 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */,
+				2A9D94278E9360A6943343C6 /* Pods-Wack.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 552C373A228A033500E0EE92 /* Build configuration list for PBXNativeTarget "Wack" */;
 			buildPhases = (
+				2DAAD596A86B34E60832818B /* [CP] Check Pods Manifest.lock */,
 				552C3724228A033400E0EE92 /* Sources */,
 				552C3725228A033400E0EE92 /* Frameworks */,
 				552C3726228A033400E0EE92 /* Resources */,
+				6A6A1F8EDCF78FF4A97BC0B9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -96,6 +137,7 @@
 				TargetAttributes = {
 					552C3727228A033400E0EE92 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -130,6 +172,51 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2DAAD596A86B34E60832818B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wack-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A6A1F8EDCF78FF4A97BC0B9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Wack/Pods-Wack-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wack/Pods-Wack-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		552C3724228A033400E0EE92 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -137,6 +224,7 @@
 			files = (
 				552C372E228A033400E0EE92 /* ViewController.swift in Sources */,
 				552C372C228A033400E0EE92 /* AppDelegate.swift in Sources */,
+				55159EF5228A0C050060B92F /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,8 +368,10 @@
 		};
 		552C373B228A033500E0EE92 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4T3CJYS2MB;
 				INFOPLIST_FILE = Wack/Info.plist;
@@ -291,6 +381,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sbassett1.Wack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Wack-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -298,8 +390,10 @@
 		};
 		552C373C228A033500E0EE92 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A9D94278E9360A6943343C6 /* Pods-Wack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4T3CJYS2MB;
 				INFOPLIST_FILE = Wack/Info.plist;
@@ -309,6 +403,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sbassett1.Wack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Supporting Files/Wack-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
