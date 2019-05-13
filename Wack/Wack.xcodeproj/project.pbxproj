@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		55159EF5228A0C050060B92F /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55159EF3228A0C050060B92F /* SWRevealViewController.m */; };
+		55159EFA228A0F6F0060B92F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55159EF9228A0F6F0060B92F /* ChatViewController.swift */; };
+		55159EFC228A0F7B0060B92F /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55159EFB228A0F7B0060B92F /* ChannelViewController.swift */; };
 		552C372C228A033400E0EE92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C372B228A033400E0EE92 /* AppDelegate.swift */; };
-		552C372E228A033400E0EE92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C372D228A033400E0EE92 /* ViewController.swift */; };
 		552C3731228A033400E0EE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552C372F228A033400E0EE92 /* Main.storyboard */; };
 		552C3733228A033500E0EE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552C3732228A033500E0EE92 /* Assets.xcassets */; };
 		552C3736228A033500E0EE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552C3734228A033500E0EE92 /* LaunchScreen.storyboard */; };
@@ -22,9 +23,10 @@
 		55159EF2228A0C040060B92F /* Wack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wack-Bridging-Header.h"; sourceTree = "<group>"; };
 		55159EF3228A0C050060B92F /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		55159EF4228A0C050060B92F /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		55159EF9228A0F6F0060B92F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		55159EFB228A0F7B0060B92F /* ChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewController.swift; sourceTree = "<group>"; };
 		552C3728228A033400E0EE92 /* Wack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		552C372B228A033400E0EE92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		552C372D228A033400E0EE92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		552C3730228A033400E0EE92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		552C3732228A033500E0EE92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		552C3735228A033500E0EE92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,10 +56,32 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		55159EF6228A0F430060B92F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				55159EF9228A0F6F0060B92F /* ChatViewController.swift */,
+				55159EFB228A0F7B0060B92F /* ChannelViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		55159EF7228A0F4B0060B92F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55159EF8228A0F510060B92F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		552C371F228A033400E0EE92 = {
 			isa = PBXGroup;
 			children = (
-				55159EF1228A0BF50060B92F /* Supporting Files */,
 				552C372A228A033400E0EE92 /* Wack */,
 				552C3729228A033400E0EE92 /* Products */,
 				E5CE7D51808B8E8939B31240 /* Pods */,
@@ -76,12 +100,15 @@
 		552C372A228A033400E0EE92 /* Wack */ = {
 			isa = PBXGroup;
 			children = (
+				55159EF8228A0F510060B92F /* Model */,
+				55159EF7228A0F4B0060B92F /* View */,
+				55159EF6228A0F430060B92F /* Controller */,
 				552C372B228A033400E0EE92 /* AppDelegate.swift */,
-				552C372D228A033400E0EE92 /* ViewController.swift */,
 				552C372F228A033400E0EE92 /* Main.storyboard */,
 				552C3732228A033500E0EE92 /* Assets.xcassets */,
 				552C3734228A033500E0EE92 /* LaunchScreen.storyboard */,
 				552C3737228A033500E0EE92 /* Info.plist */,
+				55159EF1228A0BF50060B92F /* Supporting Files */,
 			);
 			path = Wack;
 			sourceTree = "<group>";
@@ -222,8 +249,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				552C372E228A033400E0EE92 /* ViewController.swift in Sources */,
 				552C372C228A033400E0EE92 /* AppDelegate.swift in Sources */,
+				55159EFA228A0F6F0060B92F /* ChatViewController.swift in Sources */,
+				55159EFC228A0F7B0060B92F /* ChannelViewController.swift in Sources */,
 				55159EF5228A0C050060B92F /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
