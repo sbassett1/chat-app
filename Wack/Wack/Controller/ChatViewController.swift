@@ -11,12 +11,26 @@ import UIKit
 class ChatViewController: UIViewController {
     
     // MARK: Outlets
+    
     @IBOutlet private var menuButton: UIButton!
+    
+    // MARK: App LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.menuButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        self.menuSetup()
+    }
+    
+    // MARK: Private Functions
+    
+    private func menuSetup() {
+        guard let revealVC = self.revealViewController(),
+            let panGesture = revealVC.panGestureRecognizer(),
+            let tapGesture = revealVC.tapGestureRecognizer() else { return }
+        self.menuButton.addTarget(revealVC, action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        self.view.addGestureRecognizer(panGesture)
+        self.view.addGestureRecognizer(tapGesture)
     }
     
 }
