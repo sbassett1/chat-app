@@ -10,10 +10,22 @@ import UIKit
 
 class ChannelViewController: UIViewController {
 
+    // MARK: Outlets
+
+    @IBOutlet private var loginButton: UIButton!
+
+    // MARK: App Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.revealViewController()?.rearViewRevealWidth = self.view.frame.width - 60
+    }
+
+    // MARK: Actions
+
+    @IBAction private func loginButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: TO_LOGIN, sender: nil)
     }
 
 }
