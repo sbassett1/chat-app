@@ -28,4 +28,8 @@ class ChannelViewController: UIViewController {
         performSegue(withIdentifier: TO_LOGIN, sender: nil)
     }
 
+    @IBAction private func prepareForUnwind(segue: UIStoryboardSegue) {
+        
+    }
+
 }
