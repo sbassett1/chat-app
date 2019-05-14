@@ -15,6 +15,8 @@
 		552C3731228A033400E0EE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552C372F228A033400E0EE92 /* Main.storyboard */; };
 		552C3733228A033500E0EE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552C3732228A033500E0EE92 /* Assets.xcassets */; };
 		552C3736228A033500E0EE92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552C3734228A033500E0EE92 /* LaunchScreen.storyboard */; };
+		557F8404228B22D800F1E37E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F8403228B22D800F1E37E /* Constants.swift */; };
+		557F8406228B299900F1E37E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F8405228B299900F1E37E /* LoginViewController.swift */; };
 		55BB4897228B11C200025206 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4896228B11C200025206 /* GradientView.swift */; };
 		635448601005BCFF721790D3 /* Pods_Wack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172129D5A6F2040C37C83A09 /* Pods_Wack.framework */; };
 /* End PBXBuildFile section */
@@ -33,6 +35,8 @@
 		552C3732228A033500E0EE92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		552C3735228A033500E0EE92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		552C3737228A033500E0EE92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		557F8403228B22D800F1E37E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		557F8405228B299900F1E37E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		55BB4896228B11C200025206 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wack/Pods-Wack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,6 +58,7 @@
 			children = (
 				55159EF9228A0F6F0060B92F /* ChatViewController.swift */,
 				55159EFB228A0F7B0060B92F /* ChannelViewController.swift */,
+				557F8405228B299900F1E37E /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 		552C372A228A033400E0EE92 /* Wack */ = {
 			isa = PBXGroup;
 			children = (
+				557F8402228B22C200F1E37E /* Utilities */,
 				551D758C228A1A840081D999 /* SupportingFiles */,
 				55BB4895228B11AF00025206 /* View */,
 				55159EF6228A0F430060B92F /* Controller */,
@@ -99,6 +105,14 @@
 				552C3737228A033500E0EE92 /* Info.plist */,
 			);
 			path = Wack;
+			sourceTree = "<group>";
+		};
+		557F8402228B22C200F1E37E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				557F8403228B22D800F1E37E /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		55BB4895228B11AF00025206 /* View */ = {
@@ -249,6 +263,8 @@
 				552C372C228A033400E0EE92 /* AppDelegate.swift in Sources */,
 				55BB4897228B11C200025206 /* GradientView.swift in Sources */,
 				55159EFA228A0F6F0060B92F /* ChatViewController.swift in Sources */,
+				557F8406228B299900F1E37E /* LoginViewController.swift in Sources */,
+				557F8404228B22D800F1E37E /* Constants.swift in Sources */,
 				55159EFC228A0F7B0060B92F /* ChannelViewController.swift in Sources */,
 				551D758F228A1AA20081D999 /* SWRevealViewController.m in Sources */,
 			);
