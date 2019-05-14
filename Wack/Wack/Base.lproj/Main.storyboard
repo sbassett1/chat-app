@@ -27,6 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="138" y="141"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="aDN-OW-scE">
