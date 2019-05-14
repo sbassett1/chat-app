@@ -103,7 +103,6 @@
 			children = (
 				557F8409228B620400F1E37E /* Services */,
 				557F8402228B22C200F1E37E /* Utilities */,
-				551D758C228A1A840081D999 /* SupportingFiles */,
 				55BB4895228B11AF00025206 /* View */,
 				55159EF6228A0F430060B92F /* Controller */,
 				552C372B228A033400E0EE92 /* AppDelegate.swift */,
@@ -111,6 +110,7 @@
 				552C3732228A033500E0EE92 /* Assets.xcassets */,
 				552C3734228A033500E0EE92 /* LaunchScreen.storyboard */,
 				552C3737228A033500E0EE92 /* Info.plist */,
+				551D758C228A1A840081D999 /* SupportingFiles */,
 			);
 			path = Wack;
 			sourceTree = "<group>";
