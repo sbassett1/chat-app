@@ -9,21 +9,21 @@
 import UIKit
 
 class ChatViewController: UIViewController {
-    
+
     // MARK: Outlets
-    
+
     @IBOutlet private var menuButton: UIButton!
-    
+
     // MARK: App LifeCycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.menuSetup()
     }
-    
+
     // MARK: Private Functions
-    
+
     private func menuSetup() {
         guard let revealVC = self.revealViewController(),
             let panGesture = revealVC.panGestureRecognizer(),
@@ -32,5 +32,5 @@ class ChatViewController: UIViewController {
         self.view.addGestureRecognizer(panGesture)
         self.view.addGestureRecognizer(tapGesture)
     }
-    
+
 }
