@@ -25,7 +25,7 @@ class ChannelViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func loginButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: TO_LOGIN, sender: nil)
+        performSegue(withIdentifier: Constants.Segues.to_login, sender: nil)
     }
 
     @IBAction private func prepareForUnwind(segue: UIStoryboardSegue) {

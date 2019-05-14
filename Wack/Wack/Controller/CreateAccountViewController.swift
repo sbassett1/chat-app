@@ -27,7 +27,7 @@ class CreateAccountViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func closeTapped(_ sender: Any) {
-        performSegue(withIdentifier: UNWIND_TO_CHANNEL, sender: nil)
+        performSegue(withIdentifier: Constants.Segues.unwind_to_channel, sender: nil)
     }
 
     @IBAction func createAccountButtonTapped(_ sender: Any) {
@@ -36,7 +36,12 @@ class CreateAccountViewController: UIViewController {
         
         AuthService.instance.registerUser(email: email, password: password) { success in
             if success {
-                print("registration was successful!!!!!")
+                print("registration was successfull!!!!!")
+                AuthService.instance.loginUser(email: email, password: password, completion: { success in
+                    if success {
+                        print("logged in user successfully!!!", AuthService.instance.authToken)
+                    }
+                })
             }
         }
     }
