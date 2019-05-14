@@ -11,7 +11,7 @@ import Foundation
 typealias CompletionHandler = (_ Success: Bool) -> ()
 
 // MARK: URL Constants
-let BASE_URL = "https://wack-chat-app.herokuapp.com/"
+let BASE_URL = "https://wack-chat-app.herokuapp.com/v1/"
 let URL_REGISTER = BASE_URL + "account/register"
 
 // MARK: Segues

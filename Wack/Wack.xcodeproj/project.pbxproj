@@ -19,6 +19,7 @@
 		557F8406228B299900F1E37E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F8405228B299900F1E37E /* LoginViewController.swift */; };
 		557F8408228B2B5000F1E37E /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F8407228B2B5000F1E37E /* CreateAccountViewController.swift */; };
 		557F840B228B621B00F1E37E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F840A228B621B00F1E37E /* AuthService.swift */; };
+		557F840D228B702300F1E37E /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F840C228B702300F1E37E /* RoundedButton.swift */; };
 		55BB4897228B11C200025206 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4896228B11C200025206 /* GradientView.swift */; };
 		635448601005BCFF721790D3 /* Pods_Wack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172129D5A6F2040C37C83A09 /* Pods_Wack.framework */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 		557F8405228B299900F1E37E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		557F8407228B2B5000F1E37E /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		557F840A228B621B00F1E37E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		557F840C228B702300F1E37E /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		55BB4896228B11C200025206 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wack/Pods-Wack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				55BB4896228B11C200025206 /* GradientView.swift */,
+				557F840C228B702300F1E37E /* RoundedButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				55159EFA228A0F6F0060B92F /* ChatViewController.swift in Sources */,
 				557F8406228B299900F1E37E /* LoginViewController.swift in Sources */,
 				557F8404228B22D800F1E37E /* Constants.swift in Sources */,
+				557F840D228B702300F1E37E /* RoundedButton.swift in Sources */,
 				557F8408228B2B5000F1E37E /* CreateAccountViewController.swift in Sources */,
 				557F840B228B621B00F1E37E /* AuthService.swift in Sources */,
 				55159EFC228A0F7B0060B92F /* ChannelViewController.swift in Sources */,
