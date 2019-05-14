@@ -18,6 +18,7 @@
 		557F8404228B22D800F1E37E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F8403228B22D800F1E37E /* Constants.swift */; };
 		557F8406228B299900F1E37E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F8405228B299900F1E37E /* LoginViewController.swift */; };
 		557F8408228B2B5000F1E37E /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F8407228B2B5000F1E37E /* CreateAccountViewController.swift */; };
+		557F840B228B621B00F1E37E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F840A228B621B00F1E37E /* AuthService.swift */; };
 		55BB4897228B11C200025206 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4896228B11C200025206 /* GradientView.swift */; };
 		635448601005BCFF721790D3 /* Pods_Wack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172129D5A6F2040C37C83A09 /* Pods_Wack.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,7 @@
 		557F8403228B22D800F1E37E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		557F8405228B299900F1E37E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		557F8407228B2B5000F1E37E /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		557F840A228B621B00F1E37E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		55BB4896228B11C200025206 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wack/Pods-Wack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +99,7 @@
 		552C372A228A033400E0EE92 /* Wack */ = {
 			isa = PBXGroup;
 			children = (
+				557F8409228B620400F1E37E /* Services */,
 				557F8402228B22C200F1E37E /* Utilities */,
 				551D758C228A1A840081D999 /* SupportingFiles */,
 				55BB4895228B11AF00025206 /* View */,
@@ -116,6 +119,14 @@
 				557F8403228B22D800F1E37E /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		557F8409228B620400F1E37E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				557F840A228B621B00F1E37E /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		55BB4895228B11AF00025206 /* View */ = {
@@ -269,6 +280,7 @@
 				557F8406228B299900F1E37E /* LoginViewController.swift in Sources */,
 				557F8404228B22D800F1E37E /* Constants.swift in Sources */,
 				557F8408228B2B5000F1E37E /* CreateAccountViewController.swift in Sources */,
+				557F840B228B621B00F1E37E /* AuthService.swift in Sources */,
 				55159EFC228A0F7B0060B92F /* ChannelViewController.swift in Sources */,
 				551D758F228A1AA20081D999 /* SWRevealViewController.m in Sources */,
 			);
