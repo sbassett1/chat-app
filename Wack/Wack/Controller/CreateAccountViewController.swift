@@ -46,7 +46,7 @@ class CreateAccountViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func closeTapped(_ sender: Any) {
-        performSegue(withIdentifier: Constants.Segues.unwind_to_channel, sender: nil)
+        performSegue(withIdentifier: Constants.Segues.unwindToChannel, sender: nil)
     }
 
     @IBAction func createAccountButtonTapped(_ sender: Any) {
@@ -69,8 +69,8 @@ class CreateAccountViewController: UIViewController {
                                                         if success {
                                                             self.loadingSpinner.isHidden = true
                                                             self.loadingSpinner.stopAnimating()
-                                                            self.performSegue(withIdentifier: Constants.Segues.unwind_to_channel, sender: nil)
-                                                            NotificationCenter.default.post(name: Constants.Notifications.user_data_changed, object: nil)
+                                                            self.performSegue(withIdentifier: Constants.Segues.unwindToChannel, sender: nil)
+                                                            NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
                                                         }
                         }
                     }
@@ -115,7 +115,7 @@ class CreateAccountViewController: UIViewController {
     }
 
     @objc private func segueToAvatarPicker() {
-        performSegue(withIdentifier: Constants.Segues.to_avatar_picker, sender: nil)
+        performSegue(withIdentifier: Constants.Segues.toAvatarPicker, sender: nil)
     }
 
     @objc private func handleTapOffKeyboard() {

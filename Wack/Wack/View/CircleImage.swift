@@ -12,6 +12,7 @@ import UIKit
 class CircleImage: UIImageView {
 
     override func awakeFromNib() {
+        super.awakeFromNib()
         self.setupView()
     }
 

@@ -14,7 +14,7 @@ class ChannelViewController: UIViewController {
 
     @IBOutlet private var loginButton: UIButton!
     @IBOutlet private var userImageView: CircleImage!
-    
+
     // MARK: App Life Cycle
 
     override func viewDidLoad() {
@@ -23,14 +23,14 @@ class ChannelViewController: UIViewController {
         self.revealViewController()?.rearViewRevealWidth = self.view.frame.width - 60
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.userDataChanged(_:)),
-                                               name: Constants.Notifications.user_data_changed,
+                                               name: Constants.Notifications.userDataChanged,
                                                object: nil)
     }
 
     // MARK: Actions
 
     @IBAction private func loginButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: Constants.Segues.to_login, sender: nil)
+        performSegue(withIdentifier: Constants.Segues.toLogin, sender: nil)
     }
 
     @IBAction private func prepareForUnwind(segue: UIStoryboardSegue) { }
@@ -44,7 +44,7 @@ class ChannelViewController: UIViewController {
             self.userImageView.backgroundColor = UserDataService.instance.color.asUIColor
         } else {
             self.loginButton.setTitle("Login", for: .normal)
-            self.userImageView.image = UIImage(named: "menuProfileIcon")
+            self.userImageView.image = #imageLiteral(resourceName: "menuProfileIcon")
             self.userImageView.backgroundColor = UIColor.clear
         }
     }

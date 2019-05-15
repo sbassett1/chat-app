@@ -19,10 +19,10 @@ class UserDataService {
     public private(set) var id = ""
 
     func setUserData(color: String,
-                             avatarName: String,
-                             email: String,
-                             name: String,
-                             id: String) {
+                     avatarName: String,
+                     email: String,
+                     name: String,
+                     id: String) {
         self.color = color
         self.avatarName = avatarName
         self.email = email
