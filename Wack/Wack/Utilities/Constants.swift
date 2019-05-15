@@ -56,5 +56,14 @@ public struct Constants {
         public static let to_login = "toLogin"
         public static let to_create_account = "toCreateAccount"
         public static let unwind_to_channel = "unwindToChannelVC"
+        public static let to_avatar_picker = "toAvatarPicker"
+    }
+
+    public struct ReuseIdentifiers {
+        public static let avatarCell = "avatarCell"
+    }
+
+    public struct Colors {
+        public static let placeholder = #colorLiteral(red: 0.3254901961, green: 0.4215201139, blue: 0.7752227187, alpha: 0.5)
     }
 }

@@ -43,7 +43,7 @@ class AuthService {
         }
     }
     
-    func registerUser(email: String, password: String, isLoggingIn: Bool, completion: @escaping CompletionHandler) {
+    func registerUser(email: String, password: String, completion: @escaping CompletionHandler) {
         
         let body = Constants.Body.register_user(email: email.lowercased(), password: password)
         
@@ -53,20 +53,36 @@ class AuthService {
                           encoding: JSONEncoding.default,
                           headers: Constants.Header.register_user).responseString { response in
                             if response.result.error == nil {
-                                if isLoggingIn {
-                                    // Standard way to parse
-//                                    guard let json = response.result.value as? [String: Any],
-//                                        let email = json["user"] as? String,
-//                                        let token = json["token"] as? String else { return }
+                                completion(true)
+                            } else {
+                                completion(false)
+                                debugPrint(response.result.error as Any)
+                            }
+        }
+    }
 
-                                    // SwiftyJSON
-                                    guard let data = response.data else { return }
-                                    let json = JSON(data: data)
-                                    self.userEmail = json["user"].stringValue
-                                    self.authToken = json["token"].stringValue
-                                    
-                                    self.isLoggedIn = true
-                                }
+    func loginUser(email: String, password: String, completion: @escaping CompletionHandler) {
+        
+        let body = Constants.Body.register_user(email: email.lowercased(), password: password)
+        
+        Alamofire.request(Constants.URL.register,
+                          method: .post,
+                          parameters: body,
+                          encoding: JSONEncoding.default,
+                          headers: Constants.Header.register_user).responseJSON { response in
+                            if response.result.error == nil {
+                                // Standard way to parse
+//                                guard let json = response.result.value as? [String: Any],
+//                                    let email = json["user"] as? String,
+//                                    let token = json["token"] as? String else { return }
+                                
+                                // SwiftyJSON
+                                guard let data = response.data else { return }
+                                let json = JSON(data: data)
+                                self.userEmail = json["user"].stringValue
+                                self.authToken = json["token"].stringValue
+
+                                self.isLoggedIn = true
                                 completion(true)
                             } else {
                                 completion(false)
@@ -90,7 +106,7 @@ class AuthService {
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.setup_user).responseJSON { response in
+                          headers: Constants.Header.setup_user).responseString { response in //.validate(contentType: ["application/json"])
                             if response.result.error == nil {
                                 guard let data = response.data else { return }
                                 let json = JSON(data: data)
