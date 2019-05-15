@@ -13,14 +13,35 @@ typealias CompletionHandler = (_ Success: Bool) -> ()
 public struct Constants {
 
     public struct URL {
-        public static let base_url = "https://wack-chat-app.herokuapp.com/v1/"
-        public static let url_register = "\(URL.base_url)account/register"
-        public static let url_login = "\(URL.base_url)account/login"
-        public static let header = ["Content-Type": "application/json; charset=utf-8"]
-        public static func body(email: String, password: String) -> [String: String] {
+        public static let base = "https://wack-chat-app.herokuapp.com/v1/"
+        public static let register = "\(URL.base)account/register"
+        public static let login = "\(URL.base)account/login"
+        public static let user_add = "\(URL.base)user/add"
+    }
+
+    public struct Header {
+        public static let register_user = [
+            "Content-Type": "application/json; charset=utf-8"
+        ]
+        public static let setup_user = [
+            "Authorization": "Bearer \(AuthService.instance.authToken)",
+            "Content-Type": "application/json; charset=utf-8"
+        ]
+    }
+
+    public struct Body {
+        public static func register_user(email: String, password: String) -> [String: String] {
             return [
                 "email": email,
                 "password": password
+            ]
+        }
+        public static func setup_user(name: String, email: String, avatarName: String, color: String) -> [String: String] {
+            return [
+                "name": name,
+                "email": email,
+                "avatarName": avatarName,
+                "avatarColor": color
             ]
         }
     }
