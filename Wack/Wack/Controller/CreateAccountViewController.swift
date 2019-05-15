@@ -88,6 +88,7 @@ class CreateAccountViewController: UIViewController {
         let green = CGFloat(arc4random_uniform(255)) / 255
         let blue = CGFloat(arc4random_uniform(255)) / 255
         let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
+
         self.backgroundColor = color
         self.color = color.asString
         UIView.animate(withDuration: 0.2) {
