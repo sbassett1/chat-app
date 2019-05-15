@@ -23,6 +23,6 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func createAccountButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: Constants.Segues.to_create_account, sender: nil)
+        performSegue(withIdentifier: Constants.Segues.toCreateAccount, sender: nil)
     }
 }

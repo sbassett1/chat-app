@@ -16,14 +16,14 @@ public struct Constants {
         public static let base = "https://wack-chat-app.herokuapp.com/v1/"
         public static let register = "\(URL.base)account/register"
         public static let login = "\(URL.base)account/login"
-        public static let user_add = "\(URL.base)user/add"
+        public static let userAdd = "\(URL.base)user/add"
     }
 
     public struct Header {
-        public static let register_user = [
+        public static let registerUser = [
             "Content-Type": "application/json; charset=utf-8"
         ]
-        public static let setup_user = [
+        public static let setupUser = [
             "Authorization": "Bearer \(AuthService.instance.authToken)",
             "Content-Type": "application/json; charset=utf-8"
         ]
@@ -47,16 +47,16 @@ public struct Constants {
     }
 
     public struct UserDefaults {
-        public static let token_key = "token"
-        public static let logged_in_key = "loggedIn"
-        public static let user_email = "userEmail"
+        public static let tokenKey = "token"
+        public static let loggedInKey = "loggedIn"
+        public static let userEmail = "userEmail"
     }
 
     public struct Segues {
-        public static let to_login = "toLogin"
-        public static let to_create_account = "toCreateAccount"
-        public static let unwind_to_channel = "unwindToChannelVC"
-        public static let to_avatar_picker = "toAvatarPicker"
+        public static let toLogin = "toLogin"
+        public static let toCreateAccount = "toCreateAccount"
+        public static let unwindToChannel = "unwindToChannelVC"
+        public static let toAvatarPicker = "toAvatarPicker"
     }
 
     public struct ReuseIdentifiers {
@@ -68,6 +68,6 @@ public struct Constants {
     }
 
     public struct Notifications {
-        public static let user_data_changed = Notification.Name("notifyUserDataChanged")
+        public static let userDataChanged = Notification.Name("notifyUserDataChanged")
     }
 }

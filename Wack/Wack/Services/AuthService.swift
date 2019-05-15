@@ -18,28 +18,28 @@ class AuthService {
 
     public private(set) var isLoggedIn: Bool {
         get {
-            return self.defaults.bool(forKey: Constants.UserDefaults.logged_in_key)
+            return self.defaults.bool(forKey: Constants.UserDefaults.loggedInKey)
         }
         set {
-            self.defaults.set(newValue, forKey: Constants.UserDefaults.logged_in_key)
+            self.defaults.set(newValue, forKey: Constants.UserDefaults.loggedInKey)
         }
     }
 
     public private(set) var authToken: String {
         get {
-            return self.defaults.value(forKey: Constants.UserDefaults.token_key) as! String
+            return self.defaults.value(forKey: Constants.UserDefaults.tokenKey) as! String
         }
         set {
-            self.defaults.set(newValue, forKey: Constants.UserDefaults.token_key)
+            self.defaults.set(newValue, forKey: Constants.UserDefaults.tokenKey)
         }
     }
 
     private var userEmail: String {
         get {
-            return self.defaults.value(forKey: Constants.UserDefaults.user_email) as! String
+            return self.defaults.value(forKey: Constants.UserDefaults.userEmail) as! String
         }
         set {
-            self.defaults.set(newValue, forKey: Constants.UserDefaults.user_email)
+            self.defaults.set(newValue, forKey: Constants.UserDefaults.userEmail)
         }
     }
 
@@ -53,7 +53,7 @@ class AuthService {
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.register_user).responseString { response in
+                          headers: Constants.Header.registerUser).responseString { response in
 
                             if response.result.error == nil {
                                 completion(true)
@@ -74,7 +74,7 @@ class AuthService {
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.register_user).responseJSON { response in
+                          headers: Constants.Header.registerUser).responseJSON { response in
 
                             if response.result.error == nil {
                                 guard let data = response.data else { return }
@@ -102,11 +102,11 @@ class AuthService {
                                              avatarName: avatarName,
                                              color: color)
 
-        Alamofire.request(Constants.URL.user_add,
+        Alamofire.request(Constants.URL.userAdd,
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.setup_user).responseJSON { response in
+                          headers: Constants.Header.setupUser).responseJSON { response in
 
                             if response.result.error == nil {
                                 guard let data = response.data else { return }
