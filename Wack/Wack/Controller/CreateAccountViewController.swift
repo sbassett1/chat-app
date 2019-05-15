@@ -18,8 +18,8 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet private var userImage: UIImageView!
     @IBOutlet private var avatarImageView: UIImageView!
     @IBOutlet private var loadingSpinner: UIActivityIndicatorView!
-    
-    // Variables
+
+    // MARK: Variables
 
     var avatarName = "profileDefault"
     var color = "[0.5, 0.5, 0.5, 1]"
@@ -70,6 +70,7 @@ class CreateAccountViewController: UIViewController {
                                                             self.loadingSpinner.isHidden = true
                                                             self.loadingSpinner.stopAnimating()
                                                             self.performSegue(withIdentifier: Constants.Segues.unwind_to_channel, sender: nil)
+                                                            NotificationCenter.default.post(name: Constants.Notifications.user_data_changed, object: nil)
                                                         }
                         }
                     }
@@ -86,7 +87,9 @@ class CreateAccountViewController: UIViewController {
         let red = CGFloat(arc4random_uniform(255)) / 255
         let green = CGFloat(arc4random_uniform(255)) / 255
         let blue = CGFloat(arc4random_uniform(255)) / 255
-        self.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
+        let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
+        self.backgroundColor = color
+        self.color = color.asString
         UIView.animate(withDuration: 0.2) {
             self.userImage.backgroundColor = self.backgroundColor
         }
@@ -97,8 +100,11 @@ class CreateAccountViewController: UIViewController {
     private func setupView() {
         self.loadingSpinner.isHidden = true
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.segueToAvatarPicker))
-        self.avatarImageView.addGestureRecognizer(tapGesture)
+        let tapOffKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOffKeyboard))
+        self.view.addGestureRecognizer(tapOffKeyboard)
+
+        let tapImageGesture = UITapGestureRecognizer(target: self, action: #selector(self.segueToAvatarPicker))
+        self.avatarImageView.addGestureRecognizer(tapImageGesture)
         self.avatarImageView.isUserInteractionEnabled = true
 
         let attributes = [NSAttributedString.Key.foregroundColor: Constants.Colors.placeholder]
@@ -109,5 +115,9 @@ class CreateAccountViewController: UIViewController {
 
     @objc private func segueToAvatarPicker() {
         performSegue(withIdentifier: Constants.Segues.to_avatar_picker, sender: nil)
+    }
+
+    @objc private func handleTapOffKeyboard() {
+        self.view.endEditing(true)
     }
 }

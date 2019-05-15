@@ -32,14 +32,14 @@ public struct Constants {
     public struct Body {
         public static func register_user(email: String, password: String) -> [String: String] {
             return [
-                "email": email,
+                "email": email.lowercased(),
                 "password": password
             ]
         }
         public static func setup_user(name: String, email: String, avatarName: String, color: String) -> [String: String] {
             return [
                 "name": name,
-                "email": email,
+                "email": email.lowercased(),
                 "avatarName": avatarName,
                 "avatarColor": color
             ]
@@ -65,5 +65,9 @@ public struct Constants {
 
     public struct Colors {
         public static let placeholder = #colorLiteral(red: 0.3254901961, green: 0.4215201139, blue: 0.7752227187, alpha: 0.5)
+    }
+
+    public struct Notifications {
+        public static let user_data_changed = Notification.Name("notifyUserDataChanged")
     }
 }

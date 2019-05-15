@@ -18,7 +18,7 @@ class AvatarPickerViewController: UIViewController {
     // MARK: Variables
 
     var avatarType = AvatarType.dark
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +31,7 @@ class AvatarPickerViewController: UIViewController {
     @IBAction func backTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func darkLightTapped(_ sender: Any) {
         self.avatarType = self.darkLightSegmentControl.selectedSegmentIndex == 0 ? .dark : .light
         self.avatarCollectionView.reloadData()
@@ -47,7 +47,7 @@ extension AvatarPickerViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 28
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = self.avatarCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifiers.avatarCell, for: indexPath) as? AvatarCell else { return AvatarCell() }
         cell.configureCell(index: indexPath.item, type: self.avatarType)

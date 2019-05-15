@@ -24,6 +24,7 @@
 		55A3E151228C7CEC00AA5B07 /* AvatarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3E150228C7CEC00AA5B07 /* AvatarPickerViewController.swift */; };
 		55A3E153228C7F7A00AA5B07 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3E152228C7F7A00AA5B07 /* AvatarCell.swift */; };
 		55A3E155228C96A000AA5B07 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3E154228C96A000AA5B07 /* CircleImage.swift */; };
+		55B0B854228CB513000C9C3F /* UIColor+Utitlities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0B853228CB513000C9C3F /* UIColor+Utitlities.swift */; };
 		55BB4897228B11C200025206 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4896228B11C200025206 /* GradientView.swift */; };
 		635448601005BCFF721790D3 /* Pods_Wack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172129D5A6F2040C37C83A09 /* Pods_Wack.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		55A3E150228C7CEC00AA5B07 /* AvatarPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerViewController.swift; sourceTree = "<group>"; };
 		55A3E152228C7F7A00AA5B07 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
 		55A3E154228C96A000AA5B07 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		55B0B853228CB513000C9C3F /* UIColor+Utitlities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utitlities.swift"; sourceTree = "<group>"; };
 		55BB4896228B11C200025206 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wack/Pods-Wack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				557F8403228B22D800F1E37E /* Constants.swift */,
+				55B0B853228CB513000C9C3F /* UIColor+Utitlities.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				557F840D228B702300F1E37E /* RoundedButton.swift in Sources */,
 				557F8408228B2B5000F1E37E /* CreateAccountViewController.swift in Sources */,
 				557F840B228B621B00F1E37E /* AuthService.swift in Sources */,
+				55B0B854228CB513000C9C3F /* UIColor+Utitlities.swift in Sources */,
 				55159EFC228A0F7B0060B92F /* ChannelViewController.swift in Sources */,
 				55A3E151228C7CEC00AA5B07 /* AvatarPickerViewController.swift in Sources */,
 				551D758F228A1AA20081D999 /* SWRevealViewController.m in Sources */,
