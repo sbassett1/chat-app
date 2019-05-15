@@ -17,6 +17,10 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var userImage: UIImageView!
 
+    // Variables
+    var avatarName = "profileDefault"
+    var color = "[0.5, 0.5, 0.5, 1]"
+
     // MARK: App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,17 +35,26 @@ class CreateAccountViewController: UIViewController {
     }
 
     @IBAction func createAccountButtonTapped(_ sender: Any) {
+        guard let username = self.usernameTextField.text, username != "" else { return }
         guard let email = self.emailTextField.text, email != "" else { return }
         guard let password = self.passwordTextField.text, password != "" else { return }
         
-        AuthService.instance.registerUser(email: email, password: password) { success in
+        AuthService.instance.registerUser(email: email, password: password, isLoggingIn: false) { success in
             if success {
                 print("registration was successfull!!!!!")
-                AuthService.instance.loginUser(email: email, password: password, completion: { success in
+                AuthService.instance.registerUser(email: email, password: password, isLoggingIn: true) { success in
                     if success {
-                        print("logged in user successfully!!!", AuthService.instance.authToken)
+                        AuthService.instance.setupUser(name: username,
+                                                       email: email,
+                                                       color: self.color,
+                                                       avatarName: self.avatarName) { success in
+                                                        if success {
+                                                            print(UserDataService.instance.name, UserDataService.instance.avatarName)
+                                                            self.performSegue(withIdentifier: Constants.Segues.unwind_to_channel, sender: nil)
+                                                        }
+                        }
                     }
-                })
+                }
             }
         }
     }
