@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
 
     // MARK: Variables
 
-    let userAuth = AuthService.instance
+    let userAuth = AuthService.shared
 
     // MARK: App Life Cycle
 
@@ -44,19 +44,20 @@ class LoginViewController: UIViewController {
         guard let email = self.emailTextField.text,
             email != "",
             let password = self.passwordTextField.text,
-            password != "" else { return }
+            password != "" else { return } // alert user to enter text
 
         self.userAuth.loginUser(email: email, password: password) { success in
             if success {
-                self.userAuth.findUserByEmail(completion: { success in
+                self.userAuth.findUserByEmail { success in
                     if success {
                         NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
-                        self.loadingSpinner.isHidden = true
-                        self.loadingSpinner.stopAnimating()
                         self.dismiss(animated: true, completion: nil)
                     }
-                })
+                }
             }
+            // Alert for failure and try again
+            self.loadingSpinner.isHidden = true
+            self.loadingSpinner.stopAnimating()
         }
     }
 

@@ -12,7 +12,9 @@ import SwiftyJSON
 
 class AuthService {
 
-    static let instance = AuthService()
+    static let shared = AuthService()
+
+    // MARK: Variables
 
     private let defaults = UserDefaults.standard
 
@@ -42,6 +44,8 @@ class AuthService {
             self.defaults.set(newValue, forKey: Constants.UserDefaults.userEmail)
         }
     }
+
+    // MARK: Global Functions
 
     func registerUser(email: String,
                       password: String,
@@ -74,7 +78,7 @@ class AuthService {
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.registerUser).responseJSON { response in
+                          headers: Constants.Header.registerUser).validate().responseJSON { response in
 
                             if response.result.error == nil {
                                 guard let data = response.data else { return }
@@ -138,6 +142,8 @@ class AuthService {
         }
     }
 
+    // MARK: Private Functions
+
     private func setUserInfo(data: Data) {
         let json = JSON(data: data)
         let color = json["avatarColor"].stringValue
@@ -146,10 +152,10 @@ class AuthService {
         let name = json["name"].stringValue
         let id = json["_id"].stringValue
 
-        UserDataService.instance.setUserData(color: color,
-                                             avatarName: avatarName,
-                                             email: email,
-                                             name: name,
-                                             id: id)
+        UserDataService.shared.setUserData(color: color,
+                                           avatarName: avatarName,
+                                           email: email,
+                                           name: name,
+                                           id: id)
     }
 }

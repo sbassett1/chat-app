@@ -28,7 +28,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hM-5f-NXc">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hM-5f-NXc" customClass="RoundedView" customModule="Wack" customModuleProvider="target">
                     <rect key="frame" x="20" y="258" width="374" height="380"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rC-H6-AyK">
@@ -68,12 +68,22 @@
                                 </label>
                             </subviews>
                         </stackView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0y-aM-JiV">
-                            <rect key="frame" x="153" y="336" width="68" height="36"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0y-aM-JiV" customClass="RoundedButton" customModule="Wack" customModuleProvider="target">
+                            <rect key="frame" x="62" y="310" width="250" height="50"/>
+                            <color key="backgroundColor" red="0.83483213186264038" green="0.47258903669499519" blue="0.45285687066419555" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="250" id="21d-hU-k2M"/>
+                                <constraint firstAttribute="height" constant="50" id="oe0-rU-plq"/>
+                            </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                             <state key="normal" title="Logout">
-                                <color key="titleColor" red="0.25882352939999997" green="0.3294117647" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="logoutTapped:" destination="-1" eventType="touchUpInside" id="qNn-2z-TkY"/>
                             </connections>
@@ -81,7 +91,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="v0y-aM-JiV" secondAttribute="bottom" constant="8" id="Awu-LM-Rrr"/>
+                        <constraint firstAttribute="bottom" secondItem="v0y-aM-JiV" secondAttribute="bottom" constant="20" id="Awu-LM-Rrr"/>
                         <constraint firstItem="2Fe-Al-hcd" firstAttribute="centerY" secondItem="9hM-5f-NXc" secondAttribute="centerY" constant="-20" id="Brb-DF-hvQ"/>
                         <constraint firstItem="1rC-H6-AyK" firstAttribute="top" secondItem="9hM-5f-NXc" secondAttribute="top" constant="8" id="IXc-D6-P86"/>
                         <constraint firstAttribute="height" constant="380" id="RH0-gO-twA"/>
@@ -89,6 +99,11 @@
                         <constraint firstItem="2Fe-Al-hcd" firstAttribute="centerX" secondItem="9hM-5f-NXc" secondAttribute="centerX" id="e2k-Do-Xrh"/>
                         <constraint firstItem="v0y-aM-JiV" firstAttribute="centerX" secondItem="9hM-5f-NXc" secondAttribute="centerX" id="nsX-t8-KXb"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

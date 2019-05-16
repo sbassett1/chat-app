@@ -14,22 +14,24 @@ class ChannelViewController: UIViewController {
 
     @IBOutlet private var loginButton: UIButton!
     @IBOutlet private var userImageView: CircleImage!
+    @IBOutlet private var channelTableView: UITableView!
 
     // MARK: Variables
 
-    let userData = UserDataService.instance
-    let userAuth = AuthService.instance
+    let userData = UserDataService.shared
+    let userAuth = AuthService.shared
+    let commData = MessageService.shared
 
     // MARK: App Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.revealViewController()?.rearViewRevealWidth = self.view.frame.width - 60
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.userDataChanged(_:)),
-                                               name: Constants.Notifications.userDataChanged,
-                                               object: nil)
+        self.channelTableView.delegate = self
+        self.channelTableView.dataSource = self
+
+        self.setupView()
+        self.registerNotifications()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -49,9 +51,26 @@ class ChannelViewController: UIViewController {
         }
     }
 
+    @IBAction func addChannelButtonTapped(_ sender: Any) {
+        let addChannel = AddChannelViewController()
+        addChannel.modalPresentationStyle = .custom
+        present(addChannel, animated: true, completion: nil)
+    }
+
     @IBAction private func prepareForUnwind(segue: UIStoryboardSegue) { }
 
     // MARK: Private Functions
+
+    private func setupView() {
+        self.revealViewController()?.rearViewRevealWidth = self.view.frame.width - 60
+    }
+
+    private func registerNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.userDataChanged(_:)),
+                                               name: Constants.Notifications.userDataChanged,
+                                               object: nil)
+    }
 
     @objc private func userDataChanged(_ notification: Notification) {
         self.setupUserInfo()
@@ -68,4 +87,23 @@ class ChannelViewController: UIViewController {
             self.userImageView.backgroundColor = UIColor.clear
         }
     }
+}
+
+extension ChannelViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.commData.channels.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = self.channelTableView.dequeueReusableCell(withIdentifier: Constants.ReuseIdentifiers.channelCell, for: indexPath) as? ChannelCell else { return UITableViewCell() }
+        let channel = self.commData.channels[indexPath.row]
+        cell.configureCell(channel: channel)
+        return cell
+    }
+
 }

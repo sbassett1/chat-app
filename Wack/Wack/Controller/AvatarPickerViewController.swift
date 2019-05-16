@@ -66,7 +66,7 @@ extension AvatarPickerViewController: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let name = self.avatarType == .dark ? "dark" : "light"
-        UserDataService.instance.setAvatarName(avatarName: "\(name)\(indexPath.item)")
+        UserDataService.shared.setAvatarName(avatarName: "\(name)\(indexPath.item)")
         self.dismiss(animated: true, completion: nil)
     }
 }
