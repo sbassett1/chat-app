@@ -17,7 +17,9 @@ class MessageService {
     // MARK: Variables
 
     var channels = [Channel]()
+    var messages = [Message]()
     var selectedChannel: Channel?
+    let userAuth = AuthService.shared
 
     // MARK: Global Functions
 
@@ -27,7 +29,7 @@ class MessageService {
                           method: .get,
                           parameters: nil,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.setupUser(AuthService.shared.authToken)).responseJSON { response in
+                          headers: Constants.Header.setupUser(self.userAuth.authToken)).responseJSON { response in
 
                             if response.result.error == nil {
 
@@ -40,7 +42,6 @@ class MessageService {
                                 } catch let error {
                                     debugPrint(error as Any)
                                 }
-                                print(self.channels)
 
                                 // SwiftyJSON example below
 
@@ -60,13 +61,41 @@ class MessageService {
                                 NotificationCenter.default.post(name: Constants.Notifications.channelsLoaded, object: nil)
                                 completion(true)
                             } else {
-                                completion(false)
                                 debugPrint(response.result.error as Any)
+                                completion(false)
+                            }
+        }
+    }
+
+    func findAllMessagesForChannel(channelId: String, completion: @escaping CompletionHandler) {
+
+        Alamofire.request("\(Constants.URL.getMessages)\(channelId)",
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: Constants.Header.setupUser(self.userAuth.authToken)).responseJSON { response in
+                            if response.result.error == nil {
+                                self.clearMessages()
+                                guard let data = response.data else { return }
+                                do {
+                                    self.messages = try JSONDecoder().decode([Message].self, from: data)
+                                } catch let error {
+                                    debugPrint(error as Any)
+                                }
+                                print(self.messages)
+                                completion(true)
+                            } else {
+                                debugPrint(response.result.error as Any)
+                                completion(false)
                             }
         }
     }
 
     func clearChannels() {
         self.channels.removeAll()
+    }
+
+    func clearMessages() {
+        self.messages.removeAll()
     }
 }

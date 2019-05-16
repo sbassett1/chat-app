@@ -35,6 +35,7 @@
 		55E5C6BF228DBAC300ED6F79 /* AddChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E5C6BD228DBAC300ED6F79 /* AddChannelViewController.xib */; };
 		55E5C6C1228DDE0300ED6F79 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6C0228DDE0300ED6F79 /* RoundedView.swift */; };
 		55E5C6C3228DFD4C00ED6F79 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6C2228DFD4C00ED6F79 /* SocketService.swift */; };
+		55E5C6C5228E241300ED6F79 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6C4228E241300ED6F79 /* Message.swift */; };
 		635448601005BCFF721790D3 /* Pods_Wack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172129D5A6F2040C37C83A09 /* Pods_Wack.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		55E5C6BD228DBAC300ED6F79 /* AddChannelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelViewController.xib; sourceTree = "<group>"; };
 		55E5C6C0228DDE0300ED6F79 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		55E5C6C2228DFD4C00ED6F79 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
+		55E5C6C4228E241300ED6F79 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wack/Pods-Wack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				55E5C6B6228DA92800ED6F79 /* Channel.swift */,
+				55E5C6C4228E241300ED6F79 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				55A3E151228C7CEC00AA5B07 /* AvatarPickerViewController.swift in Sources */,
 				551D758F228A1AA20081D999 /* SWRevealViewController.m in Sources */,
 				55E5C6BE228DBAC300ED6F79 /* AddChannelViewController.swift in Sources */,
+				55E5C6C5228E241300ED6F79 /* Message.swift in Sources */,
 				55E5C6C1228DDE0300ED6F79 /* RoundedView.swift in Sources */,
 				55A3E155228C96A000AA5B07 /* CircleImage.swift in Sources */,
 			);

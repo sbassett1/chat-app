@@ -6,8 +6,6 @@
 //  Copyright © 2019 Stephen Bassett. All rights reserved.
 //
 
-import Foundation
-
 struct Channel: Decodable {
 
     // For Swift 4 Decoder
