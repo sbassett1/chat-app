@@ -17,7 +17,7 @@ class AvatarCell: UICollectionViewCell {
 
     // MARK: Outlets
 
-    @IBOutlet var avatarImage: UIImageView!
+    @IBOutlet private var avatarImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

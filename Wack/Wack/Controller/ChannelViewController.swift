@@ -15,6 +15,11 @@ class ChannelViewController: UIViewController {
     @IBOutlet private var loginButton: UIButton!
     @IBOutlet private var userImageView: CircleImage!
 
+    // MARK: Variables
+
+    let userData = UserDataService.instance
+    let userAuth = AuthService.instance
+
     // MARK: App Life Cycle
 
     override func viewDidLoad() {
@@ -30,7 +35,13 @@ class ChannelViewController: UIViewController {
     // MARK: Actions
 
     @IBAction private func loginButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: Constants.Segues.toLogin, sender: nil)
+        if self.userAuth.isLoggedIn {
+            let profileView = ProfileViewController()
+            profileView.modalPresentationStyle = .custom
+            present(profileView, animated: true, completion: nil)
+        } else {
+            performSegue(withIdentifier: Constants.Segues.toLogin, sender: nil)
+        }
     }
 
     @IBAction private func prepareForUnwind(segue: UIStoryboardSegue) { }
@@ -38,10 +49,10 @@ class ChannelViewController: UIViewController {
     // MARK: Private Functions
 
     @objc private func userDataChanged(_ notification: Notification) {
-        if AuthService.instance.isLoggedIn {
-            self.loginButton.setTitle(UserDataService.instance.name, for: .normal)
-            self.userImageView.image = UIImage(named: UserDataService.instance.avatarName)
-            self.userImageView.backgroundColor = UserDataService.instance.color.asUIColor
+        if self.userAuth.isLoggedIn {
+            self.loginButton.setTitle(self.userData.name, for: .normal)
+            self.userImageView.image = UIImage(named: self.userData.avatarName)
+            self.userImageView.backgroundColor = self.userData.color.asUIColor
         } else {
             self.loginButton.setTitle("Login", for: .normal)
             self.userImageView.image = #imageLiteral(resourceName: "menuProfileIcon")

@@ -18,11 +18,11 @@ class LoginViewController: UIViewController {
 
     // MARK: Actions
 
-    @IBAction func closeTapped(_ sender: Any) {
+    @IBAction private func closeTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func createAccountButtonTapped(_ sender: Any) {
+    @IBAction private func createAccountButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: Constants.Segues.toCreateAccount, sender: nil)
     }
 }

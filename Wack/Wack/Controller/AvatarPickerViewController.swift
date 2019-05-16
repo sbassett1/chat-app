@@ -28,11 +28,11 @@ class AvatarPickerViewController: UIViewController {
 
     // MARK: Actions
 
-    @IBAction func backTapped(_ sender: Any) {
+    @IBAction private func backTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func darkLightTapped(_ sender: Any) {
+    @IBAction private func darkLightTapped(_ sender: Any) {
         self.avatarType = self.darkLightSegmentControl.selectedSegmentIndex == 0 ? .dark : .light
         self.avatarCollectionView.reloadData()
     }

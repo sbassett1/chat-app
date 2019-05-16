@@ -16,7 +16,7 @@ class AuthService {
 
     private let defaults = UserDefaults.standard
 
-    public private(set) var isLoggedIn: Bool {
+    var isLoggedIn: Bool {
         get {
             return self.defaults.bool(forKey: Constants.UserDefaults.loggedInKey)
         }
@@ -25,7 +25,7 @@ class AuthService {
         }
     }
 
-    public private(set) var authToken: String {
+    var authToken: String {
         get {
             return self.defaults.value(forKey: Constants.UserDefaults.tokenKey) as! String
         }
@@ -34,7 +34,7 @@ class AuthService {
         }
     }
 
-    private var userEmail: String {
+    var userEmail: String {
         get {
             return self.defaults.value(forKey: Constants.UserDefaults.userEmail) as! String
         }

@@ -20,6 +20,7 @@ extension UIColor {
 extension String {
 
     var asUIColor: UIColor {
+        guard self != "" else { return UIColor.clear }
         let componentsString = self.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
         let components = componentsString.components(separatedBy: ", ")
         return UIColor(red: CGFloat((components[0] as NSString).floatValue),
