@@ -19,6 +19,8 @@ class AvatarPickerViewController: UIViewController {
 
     var avatarType = AvatarType.dark
 
+    // MARK: App Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -21,6 +21,8 @@ class ProfileViewController: UIViewController {
 
     let userData = UserDataService.shared
 
+    // MARK: App Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()

@@ -49,8 +49,8 @@
                                         <state key="normal" image="smackBurger"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSb-I3-Awe">
-                                        <rect key="frame" x="186" y="45.5" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="184.5" y="45.5" width="45" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -74,6 +74,7 @@
                         <viewLayoutGuide key="safeArea" id="s5h-Lb-qdt"/>
                     </view>
                     <connections>
+                        <outlet property="channelNameLabel" destination="nSb-I3-Awe" id="Iaf-Bh-wH9"/>
                         <outlet property="menuButton" destination="dLf-dn-vj0" id="cqN-3A-4up"/>
                     </connections>
                 </viewController>
@@ -90,19 +91,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXw-mQ-gpk">
-                                <rect key="frame" x="16" y="68" width="50" height="23"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                <rect key="frame" x="16" y="68" width="66" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHANNELS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5U-Jt-fVq">
-                                <rect key="frame" x="16" y="111" width="65" height="14"/>
+                                <rect key="frame" x="16" y="118" width="65" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JoW-dM-MHQ">
-                                <rect key="frame" x="312" y="107" width="22" height="22"/>
+                                <rect key="frame" x="312" y="114" width="22" height="22"/>
                                 <state key="normal" image="addChannelButton"/>
                                 <connections>
                                     <action selector="addChannelButtonTapped:" destination="JRy-vo-GMK" eventType="touchUpInside" id="3QO-yN-YyC"/>
@@ -126,7 +127,7 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aGv-y1-jkx">
-                                <rect key="frame" x="0.0" y="149" width="414" height="598"/>
+                                <rect key="frame" x="0.0" y="156" width="414" height="591"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="channelCell" id="gZG-90-lpi" customClass="ChannelCell" customModule="Wack" customModuleProvider="target">
@@ -180,7 +181,9 @@
                         <viewLayoutGuide key="safeArea" id="wMT-JT-RrL"/>
                     </view>
                     <connections>
+                        <outlet property="addChannelButton" destination="JoW-dM-MHQ" id="n05-v5-uEt"/>
                         <outlet property="channelTableView" destination="aGv-y1-jkx" id="dLQ-4Q-hE0"/>
+                        <outlet property="channelsLabel" destination="V5U-Jt-fVq" id="YPN-Ve-p8f"/>
                         <outlet property="loginButton" destination="qi4-ly-yrw" id="3fb-3U-7wk"/>
                         <outlet property="userImageView" destination="3zN-kt-i3F" id="7np-Gy-eBM"/>
                         <segue destination="KGu-sL-lsh" kind="show" identifier="toLogin" id="if8-tN-d39"/>

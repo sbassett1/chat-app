@@ -49,5 +49,6 @@ class UserDataService {
         self.userAuth.isLoggedIn = false
         self.userAuth.userEmail = ""
         self.userAuth.authToken = ""
+        MessageService.shared.clearChannels()
     }
 }
