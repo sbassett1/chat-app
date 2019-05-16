@@ -32,6 +32,12 @@ class ChannelViewController: UIViewController {
 
         self.setupView()
         self.registerNotifications()
+
+        SocketService.shared.getChannel { success in
+            if success {
+                self.channelTableView.reloadData()
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {

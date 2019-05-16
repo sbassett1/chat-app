@@ -29,7 +29,8 @@ class AuthService {
 
     var authToken: String {
         get {
-            return self.defaults.value(forKey: Constants.UserDefaults.tokenKey) as? String ?? ""
+            guard let value = self.defaults.value(forKey: Constants.UserDefaults.tokenKey) else { return "" }
+            return value as! String
         }
         set {
             self.defaults.set(newValue, forKey: Constants.UserDefaults.tokenKey)
@@ -38,7 +39,8 @@ class AuthService {
 
     var userEmail: String {
         get {
-            return self.defaults.value(forKey: Constants.UserDefaults.userEmail) as? String ?? ""
+            guard let value = self.defaults.value(forKey: Constants.UserDefaults.userEmail) else { return "" }
+            return value as! String
         }
         set {
             self.defaults.set(newValue, forKey: Constants.UserDefaults.userEmail)
@@ -110,7 +112,7 @@ class AuthService {
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.setupUser).responseJSON { response in
+                          headers: Constants.Header.setupUser(self.authToken)).responseJSON { response in
 
                             if response.result.error == nil {
                                 guard let data = response.data else { return }
@@ -129,7 +131,7 @@ class AuthService {
                           method: .get,
                           parameters: nil,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.setupUser).responseJSON { response in
+                          headers: Constants.Header.setupUser(self.authToken)).responseJSON { response in
 
                             if response.result.error == nil {
                                 guard let data = response.data else { return }

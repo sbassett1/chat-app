@@ -26,7 +26,8 @@ class MessageService {
                           method: .get,
                           parameters: nil,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.setupUser).responseJSON { response in
+                          headers: Constants.Header.setupUser(AuthService.shared.authToken)).responseJSON { response in
+
                             if response.result.error == nil {
 
                                 // Usins new swift approach parsing but requires exact

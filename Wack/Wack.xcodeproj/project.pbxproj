@@ -34,6 +34,7 @@
 		55E5C6BE228DBAC300ED6F79 /* AddChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6BC228DBAC300ED6F79 /* AddChannelViewController.swift */; };
 		55E5C6BF228DBAC300ED6F79 /* AddChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E5C6BD228DBAC300ED6F79 /* AddChannelViewController.xib */; };
 		55E5C6C1228DDE0300ED6F79 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6C0228DDE0300ED6F79 /* RoundedView.swift */; };
+		55E5C6C3228DFD4C00ED6F79 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6C2228DFD4C00ED6F79 /* SocketService.swift */; };
 		635448601005BCFF721790D3 /* Pods_Wack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172129D5A6F2040C37C83A09 /* Pods_Wack.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		55E5C6BC228DBAC300ED6F79 /* AddChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewController.swift; sourceTree = "<group>"; };
 		55E5C6BD228DBAC300ED6F79 /* AddChannelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelViewController.xib; sourceTree = "<group>"; };
 		55E5C6C0228DDE0300ED6F79 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		55E5C6C2228DFD4C00ED6F79 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
 		EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wack/Pods-Wack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +159,7 @@
 			children = (
 				557F840A228B621B00F1E37E /* AuthService.swift */,
 				55E5C6B3228DA88400ED6F79 /* MessageService.swift */,
+				55E5C6C2228DFD4C00ED6F79 /* SocketService.swift */,
 				55A3E14E228C64D100AA5B07 /* UserDataService.swift */,
 			);
 			path = Services;
@@ -380,6 +383,7 @@
 				55A3E14F228C64D100AA5B07 /* UserDataService.swift in Sources */,
 				557F840D228B702300F1E37E /* RoundedButton.swift in Sources */,
 				557F8408228B2B5000F1E37E /* CreateAccountViewController.swift in Sources */,
+				55E5C6C3228DFD4C00ED6F79 /* SocketService.swift in Sources */,
 				557F840B228B621B00F1E37E /* AuthService.swift in Sources */,
 				55B0B854228CB513000C9C3F /* Extensions.swift in Sources */,
 				55E5C6B4228DA88400ED6F79 /* MessageService.swift in Sources */,

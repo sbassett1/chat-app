@@ -28,7 +28,14 @@ class AddChannelViewController: UIViewController {
     }
 
     @IBAction func createChannelTapped(_ sender: Any) {
-        self.dismissView()
+        guard let channelName = nameTextField.text,
+            channelName != "",
+            let channelDescription = descriptionTextField.text else { return }
+        SocketService.shared.addChannel(channelName: channelName, channelDescription: channelDescription) { success in
+            if success {
+                self.dismissView()
+            }
+        }
     }
 
     // MARK: Private Functions
