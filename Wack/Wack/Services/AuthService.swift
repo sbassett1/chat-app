@@ -29,7 +29,7 @@ class AuthService {
 
     var authToken: String {
         get {
-            return self.defaults.value(forKey: Constants.UserDefaults.tokenKey) as! String
+            return self.defaults.value(forKey: Constants.UserDefaults.tokenKey) as? String ?? ""
         }
         set {
             self.defaults.set(newValue, forKey: Constants.UserDefaults.tokenKey)
@@ -38,7 +38,7 @@ class AuthService {
 
     var userEmail: String {
         get {
-            return self.defaults.value(forKey: Constants.UserDefaults.userEmail) as! String
+            return self.defaults.value(forKey: Constants.UserDefaults.userEmail) as? String ?? ""
         }
         set {
             self.defaults.set(newValue, forKey: Constants.UserDefaults.userEmail)

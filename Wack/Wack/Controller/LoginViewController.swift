@@ -64,6 +64,10 @@ class LoginViewController: UIViewController {
     // MARK: Private Functions
 
     private func setupView() {
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+//        self.emailTextField.becomeFirstResponder()
+
         self.loadingSpinner.isHidden = true
 
         let tapOffKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOffKeyboard))
@@ -77,4 +81,15 @@ class LoginViewController: UIViewController {
     @objc private func handleTapOffKeyboard() {
         self.view.endEditing(true)
     }
+
+}
+
+extension LoginViewController: UITextFieldDelegate {
+
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.loginButtonTapped(self)
+        return true
+    }
+
 }

@@ -52,6 +52,9 @@ class CreateAccountViewController: UIViewController {
     }
 
     @IBAction private func createAccountButtonTapped(_ sender: Any) {
+
+        // Add alert to suggest changing the avatar and color
+
         self.loadingSpinner.isHidden = false
         self.loadingSpinner.startAnimating()
 
@@ -101,6 +104,10 @@ class CreateAccountViewController: UIViewController {
     // MARK: Private Functions
 
     private func setupView() {
+        self.usernameTextField.delegate = self
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+
         self.loadingSpinner.isHidden = true
 
         let tapOffKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOffKeyboard))
@@ -123,4 +130,14 @@ class CreateAccountViewController: UIViewController {
     @objc private func handleTapOffKeyboard() {
         self.view.endEditing(true)
     }
+}
+
+extension CreateAccountViewController: UITextFieldDelegate {
+
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.createAccountButtonTapped(self)
+        return true
+    }
+
 }
