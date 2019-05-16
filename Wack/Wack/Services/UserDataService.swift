@@ -12,6 +12,10 @@ class UserDataService {
 
     static let instance = UserDataService()
 
+    // MARK: Variables
+
+    let userAuth = AuthService.instance
+
     public private(set) var color = ""
     public private(set) var avatarName = ""
     public private(set) var email = ""
@@ -32,5 +36,16 @@ class UserDataService {
 
     func setAvatarName(avatarName: String) {
         self.avatarName = avatarName
+    }
+
+    func logoutUser() {
+        self.color = ""
+        self.avatarName = ""
+        self.email = ""
+        self.name = ""
+        self.id = ""
+        self.userAuth.isLoggedIn = false
+        self.userAuth.userEmail = ""
+        self.userAuth.authToken = ""
     }
 }

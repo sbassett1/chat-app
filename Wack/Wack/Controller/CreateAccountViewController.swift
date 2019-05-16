@@ -24,6 +24,8 @@ class CreateAccountViewController: UIViewController {
     var avatarName = "profileDefault"
     var color = "[0.5, 0.5, 0.5, 1]"
     var backgroundColor: UIColor?
+    let userData = UserDataService.instance
+    let userAuth = AuthService.instance
 
     // MARK: App Life Cycle
     override func viewDidLoad() {
@@ -34,8 +36,8 @@ class CreateAccountViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if UserDataService.instance.avatarName != "" {
-            self.avatarName = UserDataService.instance.avatarName
+        if self.userData.avatarName != "" {
+            self.avatarName = self.userData.avatarName
             self.userImage.image = UIImage(named: self.avatarName)
             if self.avatarName.contains("light") && self.backgroundColor == nil {
                 self.userImage.backgroundColor = UIColor.lightGray
@@ -49,7 +51,7 @@ class CreateAccountViewController: UIViewController {
         performSegue(withIdentifier: Constants.Segues.unwindToChannel, sender: nil)
     }
 
-    @IBAction func createAccountButtonTapped(_ sender: Any) {
+    @IBAction private func createAccountButtonTapped(_ sender: Any) {
         self.loadingSpinner.isHidden = false
         self.loadingSpinner.startAnimating()
 
@@ -57,21 +59,21 @@ class CreateAccountViewController: UIViewController {
         guard let email = self.emailTextField.text, email != "" else { return }
         guard let password = self.passwordTextField.text, password != "" else { return }
 
-        AuthService.instance.registerUser(email: email, password: password) { success in
+        self.userAuth.registerUser(email: email, password: password) { success in
             if success {
                 print("registration was successfull!!!!!")
-                AuthService.instance.loginUser(email: email, password: password) { success in
+                self.userAuth.loginUser(email: email, password: password) { success in
                     if success {
-                        AuthService.instance.setupUser(name: username,
-                                                       email: email,
-                                                       color: self.color,
-                                                       avatarName: self.avatarName) { success in
-                                                        if success {
-                                                            self.loadingSpinner.isHidden = true
-                                                            self.loadingSpinner.stopAnimating()
-                                                            self.performSegue(withIdentifier: Constants.Segues.unwindToChannel, sender: nil)
-                                                            NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
-                                                        }
+                        self.userAuth.setupUser(name: username,
+                                                email: email,
+                                                color: self.color,
+                                                avatarName: self.avatarName) { success in
+                                                    if success {
+                                                        self.loadingSpinner.isHidden = true
+                                                        self.loadingSpinner.stopAnimating()
+                                                        self.performSegue(withIdentifier: Constants.Segues.unwindToChannel, sender: nil)
+                                                        NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
+                                                    }
                         }
                     }
                 }
@@ -79,11 +81,11 @@ class CreateAccountViewController: UIViewController {
         }
     }
 
-    @IBAction func pickAvatarButtonTapped(_ sender: Any) {
+    @IBAction private func pickAvatarButtonTapped(_ sender: Any) {
         self.segueToAvatarPicker()
     }
 
-    @IBAction func pickBackgroundColorButtonTapped(_ sender: Any) {
+    @IBAction private func pickBackgroundColorButtonTapped(_ sender: Any) {
         let red = CGFloat(arc4random_uniform(255)) / 255
         let green = CGFloat(arc4random_uniform(255)) / 255
         let blue = CGFloat(arc4random_uniform(255)) / 255
