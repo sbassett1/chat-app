@@ -18,6 +18,7 @@ public struct Constants {
         public static let loginNewUser = "\(URL.base)account/login"
         public static let userAdd = "\(URL.base)user/add"
         public static let loginUserByEmail = "\(URL.base)user/byEmail/"
+        public static let getChannels = "\(URL.base)channel/"
     }
 
     public struct Header {
@@ -25,7 +26,7 @@ public struct Constants {
             "Content-Type": "application/json; charset=utf-8"
         ]
         public static let setupUser = [
-            "Authorization": "Bearer \(AuthService.instance.authToken)",
+            "Authorization": "Bearer \(AuthService.shared.authToken)",
             "Content-Type": "application/json; charset=utf-8"
         ]
     }
@@ -62,6 +63,7 @@ public struct Constants {
 
     public struct ReuseIdentifiers {
         public static let avatarCell = "avatarCell"
+        public static let channelCell = "channelCell"
     }
 
     public struct Colors {

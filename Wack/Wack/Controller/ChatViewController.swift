@@ -16,7 +16,7 @@ class ChatViewController: UIViewController {
 
     // MARK: Variables
 
-    let userAuth = AuthService.instance
+    let userAuth = AuthService.shared
 
     // MARK: App LifeCycle
 
@@ -24,6 +24,9 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
 
         self.menuSetup()
+        MessageService.shared.findAllChannels { _ in
+
+        }
     }
 
     // MARK: Private Functions

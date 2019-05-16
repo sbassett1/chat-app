@@ -24,8 +24,8 @@ class CreateAccountViewController: UIViewController {
     var avatarName = "profileDefault"
     var color = "[0.5, 0.5, 0.5, 1]"
     var backgroundColor: UIColor?
-    let userData = UserDataService.instance
-    let userAuth = AuthService.instance
+    let userData = UserDataService.shared
+    let userAuth = AuthService.shared
 
     // MARK: App Life Cycle
     override func viewDidLoad() {

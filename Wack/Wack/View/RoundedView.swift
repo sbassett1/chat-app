@@ -1,13 +1,13 @@
 //
-//  RoundedButton.swift
+//  RoundedView.swift
 //  Wack
 //
-//  Created by Stephen Bassett on 5/14/19.
+//  Created by Stephen Bassett on 5/16/19.
 //  Copyright © 2019 Stephen Bassett. All rights reserved.
 //
 
 @IBDesignable
-class RoundedButton: UIButton {
+class RoundedView: UIView {
 
     @IBInspectable var cornerRadius: CGFloat = 3.0 {
         didSet {

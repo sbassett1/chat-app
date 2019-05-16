@@ -10,17 +10,19 @@ import Foundation
 
 class UserDataService {
 
-    static let instance = UserDataService()
+    static let shared = UserDataService()
 
     // MARK: Variables
 
-    let userAuth = AuthService.instance
+    let userAuth = AuthService.shared
 
     public private(set) var color = ""
     public private(set) var avatarName = ""
     public private(set) var email = ""
     public private(set) var name = ""
     public private(set) var id = ""
+
+    // MARK: Functions
 
     func setUserData(color: String,
                      avatarName: String,

@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
 
     // MARK: Variables
 
-    let userData = UserDataService.instance
+    let userData = UserDataService.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
