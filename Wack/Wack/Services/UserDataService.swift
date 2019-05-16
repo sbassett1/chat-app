@@ -22,7 +22,7 @@ class UserDataService {
     public private(set) var name = ""
     public private(set) var id = ""
 
-    // MARK: Functions
+    // MARK: Global Functions
 
     func setUserData(color: String,
                      avatarName: String,

@@ -25,10 +25,12 @@ public struct Constants {
         public static let registerUser = [
             "Content-Type": "application/json; charset=utf-8"
         ]
-        public static let setupUser = [
-            "Authorization": "Bearer \(AuthService.shared.authToken)",
-            "Content-Type": "application/json; charset=utf-8"
-        ]
+        public static func setupUser(_ authToken: String) -> [String: String] {
+            return [
+                "Authorization": "Bearer \(authToken)",
+                "Content-Type": "application/json; charset=utf-8"
+            ]
+        }
     }
 
     public struct Body {
