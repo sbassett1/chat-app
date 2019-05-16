@@ -19,6 +19,7 @@ public struct Constants {
         public static let userAdd = "\(URL.base)user/add"
         public static let loginUserByEmail = "\(URL.base)user/byEmail/"
         public static let getChannels = "\(URL.base)channel/"
+        public static let getMessages = "\(URL.base)message/byChannel"
     }
 
     public struct Header {

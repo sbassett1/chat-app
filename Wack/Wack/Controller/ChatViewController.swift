@@ -64,7 +64,21 @@ class ChatViewController: UIViewController {
     private func onLoginGetMessages() {
         self.commData.findAllChannels { success in
             if success {
-                // Do stuff with channels
+                if !self.commData.channels.isEmpty {
+                    self.commData.selectedChannel = self.commData.channels.first
+                    self.updateWithChannel()
+                } else {
+                    self.channelNameLabel.text = "No Channels Joined"
+                }
+            }
+        }
+    }
+
+    private func getMessages() {
+        guard let channelId = self.commData.selectedChannel?._id else { return }
+        self.commData.findAllMessagesForChannel(channelId: channelId) { success in
+            if success {
+
             }
         }
     }
