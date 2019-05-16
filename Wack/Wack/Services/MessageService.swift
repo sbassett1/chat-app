@@ -17,6 +17,7 @@ class MessageService {
     // MARK: Variables
 
     var channels = [Channel]()
+    var selectedChannel: Channel?
 
     // MARK: Global Functions
 
@@ -56,11 +57,16 @@ class MessageService {
 //                                    self.channels.append(channel)
 //                                }
 
+                                NotificationCenter.default.post(name: Constants.Notifications.channelsLoaded, object: nil)
                                 completion(true)
                             } else {
                                 completion(false)
                                 debugPrint(response.result.error as Any)
                             }
         }
+    }
+
+    func clearChannels() {
+        self.channels.removeAll()
     }
 }

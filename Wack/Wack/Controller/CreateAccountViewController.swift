@@ -28,9 +28,9 @@ class CreateAccountViewController: UIViewController {
     let userAuth = AuthService.shared
 
     // MARK: App Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setupView()
     }
 

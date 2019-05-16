@@ -12,13 +12,16 @@ class AddChannelViewController: UIViewController {
 
     // MARK: Outlets
 
-    @IBOutlet var nameTextField: UITextField!
-    @IBOutlet var descriptionTextField: UITextField!
-    @IBOutlet var backgroundView: UIView!
+    @IBOutlet private var nameTextField: UITextField!
+    @IBOutlet private var descriptionTextField: UITextField!
+    @IBOutlet private var backgroundView: UIView!
+
+    // MARK: App Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
+        self.addGestures()
     }
 
     // MARK: Actions
@@ -27,10 +30,11 @@ class AddChannelViewController: UIViewController {
         self.dismissView()
     }
 
-    @IBAction func createChannelTapped(_ sender: Any) {
+    @IBAction private func createChannelTapped(_ sender: Any) {
         guard let channelName = nameTextField.text,
             channelName != "",
             let channelDescription = descriptionTextField.text else { return }
+
         SocketService.shared.addChannel(channelName: channelName, channelDescription: channelDescription) { success in
             if success {
                 self.dismissView()
@@ -41,11 +45,8 @@ class AddChannelViewController: UIViewController {
     // MARK: Private Functions
 
     private func setupView() {
-        let tapToDismiss = UITapGestureRecognizer(target: self, action: #selector(self.dismissView))
-        let swipeDownToDismiss = UISwipeGestureRecognizer(target: self, action: #selector(self.dismissView))
-        swipeDownToDismiss.direction = UISwipeGestureRecognizer.Direction.down
-        self.backgroundView.addGestureRecognizer(tapToDismiss)
-        self.backgroundView.addGestureRecognizer(swipeDownToDismiss)
+        self.nameTextField.delegate = self
+        self.descriptionTextField.delegate = self
 
         let attributes = [NSAttributedString.Key.foregroundColor: Constants.Colors.placeholder]
         self.nameTextField.attributedPlaceholder = NSAttributedString(string: "name", attributes: attributes)
@@ -55,4 +56,22 @@ class AddChannelViewController: UIViewController {
     @objc private func dismissView() {
         dismiss(animated: true, completion: nil)
     }
+
+    private func addGestures() {
+        let tapToDismiss = UITapGestureRecognizer(target: self, action: #selector(self.dismissView))
+        let swipeDownToDismiss = UISwipeGestureRecognizer(target: self, action: #selector(self.dismissView))
+        swipeDownToDismiss.direction = UISwipeGestureRecognizer.Direction.down
+        self.backgroundView.addGestureRecognizer(tapToDismiss)
+        self.backgroundView.addGestureRecognizer(swipeDownToDismiss)
+    }
+}
+
+extension AddChannelViewController: UITextFieldDelegate {
+
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.createChannelTapped(self)
+        return true
+    }
+
 }

@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: Constants.Segues.toCreateAccount, sender: nil)
     }
 
-    @IBAction func loginButtonTapped(_ sender: Any) {
+    @IBAction private func loginButtonTapped(_ sender: Any) {
         self.loadingSpinner.isHidden = false
         self.loadingSpinner.startAnimating()
 
