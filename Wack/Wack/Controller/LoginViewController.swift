@@ -10,10 +10,21 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    // MARK: Outlets
+
+    @IBOutlet private var emailTextField: UITextField!
+    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var loadingSpinner: UIActivityIndicatorView!
+
+    // MARK: Variables
+
+    let userAuth = AuthService.instance
+
     // MARK: App Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupView()
     }
 
     // MARK: Actions
@@ -24,5 +35,45 @@ class LoginViewController: UIViewController {
 
     @IBAction private func createAccountButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: Constants.Segues.toCreateAccount, sender: nil)
+    }
+
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        self.loadingSpinner.isHidden = false
+        self.loadingSpinner.startAnimating()
+
+        guard let email = self.emailTextField.text,
+            email != "",
+            let password = self.passwordTextField.text,
+            password != "" else { return }
+
+        self.userAuth.loginUser(email: email, password: password) { success in
+            if success {
+                self.userAuth.findUserByEmail(completion: { success in
+                    if success {
+                        NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
+                        self.loadingSpinner.isHidden = true
+                        self.loadingSpinner.stopAnimating()
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
+            }
+        }
+    }
+
+    // MARK: Private Functions
+
+    private func setupView() {
+        self.loadingSpinner.isHidden = true
+
+        let tapOffKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOffKeyboard))
+        self.view.addGestureRecognizer(tapOffKeyboard)
+
+        let attributes = [NSAttributedString.Key.foregroundColor: Constants.Colors.placeholder]
+        self.emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: attributes)
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: attributes)
+    }
+
+    @objc private func handleTapOffKeyboard() {
+        self.view.endEditing(true)
     }
 }

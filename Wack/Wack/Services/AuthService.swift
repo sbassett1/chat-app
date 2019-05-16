@@ -47,7 +47,7 @@ class AuthService {
                       password: String,
                       completion: @escaping CompletionHandler) {
 
-        let body = Constants.Body.register_user(email: email, password: password)
+        let body = Constants.Body.registerUser(email: email, password: password)
 
         Alamofire.request(Constants.URL.register,
                           method: .post,
@@ -68,9 +68,9 @@ class AuthService {
                    password: String,
                    completion: @escaping CompletionHandler) {
 
-        let body = Constants.Body.register_user(email: email, password: password)
+        let body = Constants.Body.registerUser(email: email, password: password)
 
-        Alamofire.request(Constants.URL.login,
+        Alamofire.request(Constants.URL.loginNewUser,
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
@@ -97,10 +97,10 @@ class AuthService {
                    avatarName: String,
                    completion: @escaping CompletionHandler) {
 
-        let body = Constants.Body.setup_user(name: name,
-                                             email: email,
-                                             avatarName: avatarName,
-                                             color: color)
+        let body = Constants.Body.setupUser(name: name,
+                                            email: email,
+                                            avatarName: avatarName,
+                                            color: color)
 
         Alamofire.request(Constants.URL.userAdd,
                           method: .post,
@@ -110,23 +110,46 @@ class AuthService {
 
                             if response.result.error == nil {
                                 guard let data = response.data else { return }
-                                let json = JSON(data: data)
-                                let color = json["avatarColor"].stringValue
-                                let avatarName = json["avatarName"].stringValue
-                                let email = json["email"].stringValue
-                                let name = json["name"].stringValue
-                                let id = json["_id"].stringValue
-
-                                UserDataService.instance.setUserData(color: color,
-                                                                     avatarName: avatarName,
-                                                                     email: email,
-                                                                     name: name,
-                                                                     id: id)
+                                self.setUserInfo(data: data)
                                 completion(true)
                             } else {
                                 completion(false)
                                 debugPrint(response.result.error as Any)
                             }
         }
+    }
+
+    func findUserByEmail(completion: @escaping CompletionHandler) {
+
+        Alamofire.request("\(Constants.URL.loginUserByEmail)\(self.userEmail)",
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: Constants.Header.setupUser).responseJSON { response in
+
+                            if response.result.error == nil {
+                                guard let data = response.data else { return }
+                                self.setUserInfo(data: data)
+                                completion(true)
+                            } else {
+                                completion(false)
+                                debugPrint(response.result.error as Any)
+                            }
+        }
+    }
+
+    private func setUserInfo(data: Data) {
+        let json = JSON(data: data)
+        let color = json["avatarColor"].stringValue
+        let avatarName = json["avatarName"].stringValue
+        let email = json["email"].stringValue
+        let name = json["name"].stringValue
+        let id = json["_id"].stringValue
+
+        UserDataService.instance.setUserData(color: color,
+                                             avatarName: avatarName,
+                                             email: email,
+                                             name: name,
+                                             id: id)
     }
 }

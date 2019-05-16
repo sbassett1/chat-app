@@ -15,8 +15,9 @@ public struct Constants {
     public struct URL {
         public static let base = "https://wack-chat-app.herokuapp.com/v1/"
         public static let register = "\(URL.base)account/register"
-        public static let login = "\(URL.base)account/login"
+        public static let loginNewUser = "\(URL.base)account/login"
         public static let userAdd = "\(URL.base)user/add"
+        public static let loginUserByEmail = "\(URL.base)user/byEmail/"
     }
 
     public struct Header {
@@ -30,13 +31,13 @@ public struct Constants {
     }
 
     public struct Body {
-        public static func register_user(email: String, password: String) -> [String: String] {
+        public static func registerUser(email: String, password: String) -> [String: String] {
             return [
                 "email": email.lowercased(),
                 "password": password
             ]
         }
-        public static func setup_user(name: String, email: String, avatarName: String, color: String) -> [String: String] {
+        public static func setupUser(name: String, email: String, avatarName: String, color: String) -> [String: String] {
             return [
                 "name": name,
                 "email": email.lowercased(),

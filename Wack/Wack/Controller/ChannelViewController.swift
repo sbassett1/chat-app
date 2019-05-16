@@ -32,6 +32,11 @@ class ChannelViewController: UIViewController {
                                                object: nil)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.setupUserInfo()
+    }
+
     // MARK: Actions
 
     @IBAction private func loginButtonTapped(_ sender: Any) {
@@ -49,6 +54,10 @@ class ChannelViewController: UIViewController {
     // MARK: Private Functions
 
     @objc private func userDataChanged(_ notification: Notification) {
+        self.setupUserInfo()
+    }
+
+    private func setupUserInfo() {
         if self.userAuth.isLoggedIn {
             self.loginButton.setTitle(self.userData.name, for: .normal)
             self.userImageView.image = UIImage(named: self.userData.avatarName)

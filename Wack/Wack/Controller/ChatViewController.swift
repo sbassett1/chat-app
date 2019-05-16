@@ -14,6 +14,10 @@ class ChatViewController: UIViewController {
 
     @IBOutlet private var menuButton: UIButton!
 
+    // MARK: Variables
+
+    let userAuth = AuthService.instance
+
     // MARK: App LifeCycle
 
     override func viewDidLoad() {
@@ -31,6 +35,12 @@ class ChatViewController: UIViewController {
         self.menuButton.addTarget(revealVC, action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addGestureRecognizer(panGesture)
         self.view.addGestureRecognizer(tapGesture)
+
+        if self.userAuth.isLoggedIn {
+            self.userAuth.findUserByEmail { _ in
+                NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
+            }
+        }
     }
 
 }
