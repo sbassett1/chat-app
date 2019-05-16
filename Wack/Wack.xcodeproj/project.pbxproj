@@ -21,6 +21,12 @@
 		557F840B228B621B00F1E37E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F840A228B621B00F1E37E /* AuthService.swift */; };
 		557F840D228B702300F1E37E /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557F840C228B702300F1E37E /* RoundedButton.swift */; };
 		55A3E14F228C64D100AA5B07 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3E14E228C64D100AA5B07 /* UserDataService.swift */; };
+		55A3E151228C7CEC00AA5B07 /* AvatarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3E150228C7CEC00AA5B07 /* AvatarPickerViewController.swift */; };
+		55A3E153228C7F7A00AA5B07 /* AvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3E152228C7F7A00AA5B07 /* AvatarCell.swift */; };
+		55A3E155228C96A000AA5B07 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A3E154228C96A000AA5B07 /* CircleImage.swift */; };
+		55B0B854228CB513000C9C3F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0B853228CB513000C9C3F /* Extensions.swift */; };
+		55B0B858228CD469000C9C3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0B856228CD469000C9C3F /* ProfileViewController.swift */; };
+		55B0B859228CD469000C9C3F /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B0B857228CD469000C9C3F /* ProfileViewController.xib */; };
 		55BB4897228B11C200025206 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4896228B11C200025206 /* GradientView.swift */; };
 		635448601005BCFF721790D3 /* Pods_Wack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172129D5A6F2040C37C83A09 /* Pods_Wack.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +51,12 @@
 		557F840A228B621B00F1E37E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		557F840C228B702300F1E37E /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		55A3E14E228C64D100AA5B07 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
+		55A3E150228C7CEC00AA5B07 /* AvatarPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerViewController.swift; sourceTree = "<group>"; };
+		55A3E152228C7F7A00AA5B07 /* AvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCell.swift; sourceTree = "<group>"; };
+		55A3E154228C96A000AA5B07 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		55B0B853228CB513000C9C3F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		55B0B856228CD469000C9C3F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		55B0B857228CD469000C9C3F /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		55BB4896228B11C200025206 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wack/Pods-Wack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +80,8 @@
 				55159EFB228A0F7B0060B92F /* ChannelViewController.swift */,
 				557F8405228B299900F1E37E /* LoginViewController.swift */,
 				557F8407228B2B5000F1E37E /* CreateAccountViewController.swift */,
+				55A3E150228C7CEC00AA5B07 /* AvatarPickerViewController.swift */,
+				55B0B856228CD469000C9C3F /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -103,16 +117,14 @@
 		552C372A228A033400E0EE92 /* Wack */ = {
 			isa = PBXGroup;
 			children = (
+				552C372B228A033400E0EE92 /* AppDelegate.swift */,
 				557F8409228B620400F1E37E /* Services */,
-				557F8402228B22C200F1E37E /* Utilities */,
 				55BB4895228B11AF00025206 /* View */,
 				55159EF6228A0F430060B92F /* Controller */,
-				552C372B228A033400E0EE92 /* AppDelegate.swift */,
-				552C372F228A033400E0EE92 /* Main.storyboard */,
-				552C3732228A033500E0EE92 /* Assets.xcassets */,
-				552C3734228A033500E0EE92 /* LaunchScreen.storyboard */,
-				552C3737228A033500E0EE92 /* Info.plist */,
+				557F8402228B22C200F1E37E /* Utilities */,
 				551D758C228A1A840081D999 /* SupportingFiles */,
+				552C3732228A033500E0EE92 /* Assets.xcassets */,
+				552C3737228A033500E0EE92 /* Info.plist */,
 			);
 			path = Wack;
 			sourceTree = "<group>";
@@ -121,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				557F8403228B22D800F1E37E /* Constants.swift */,
+				55B0B853228CB513000C9C3F /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -134,11 +147,24 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		55B0B85A228CD4DC000C9C3F /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				55B0B857228CD469000C9C3F /* ProfileViewController.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
 		55BB4895228B11AF00025206 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				552C372F228A033400E0EE92 /* Main.storyboard */,
+				552C3734228A033500E0EE92 /* LaunchScreen.storyboard */,
 				55BB4896228B11C200025206 /* GradientView.swift */,
 				557F840C228B702300F1E37E /* RoundedButton.swift */,
+				55A3E152228C7F7A00AA5B07 /* AvatarCell.swift */,
+				55A3E154228C96A000AA5B07 /* CircleImage.swift */,
+				55B0B85A228CD4DC000C9C3F /* XIBs */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +198,7 @@
 				552C3725228A033400E0EE92 /* Frameworks */,
 				552C3726228A033400E0EE92 /* Resources */,
 				6A6A1F8EDCF78FF4A97BC0B9 /* [CP] Embed Pods Frameworks */,
+				55B0B855228CCB7F000C9C3F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -223,6 +250,7 @@
 			files = (
 				552C3736228A033500E0EE92 /* LaunchScreen.storyboard in Resources */,
 				552C3733228A033500E0EE92 /* Assets.xcassets in Resources */,
+				55B0B859228CD469000C9C3F /* ProfileViewController.xib in Resources */,
 				552C3731228A033400E0EE92 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,6 +275,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		55B0B855228CCB7F000C9C3F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		6A6A1F8EDCF78FF4A97BC0B9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -281,16 +326,21 @@
 			files = (
 				551D7591228A1AC40081D999 /* Wack-Bridging-Header.h in Sources */,
 				552C372C228A033400E0EE92 /* AppDelegate.swift in Sources */,
+				55A3E153228C7F7A00AA5B07 /* AvatarCell.swift in Sources */,
 				55BB4897228B11C200025206 /* GradientView.swift in Sources */,
 				55159EFA228A0F6F0060B92F /* ChatViewController.swift in Sources */,
 				557F8406228B299900F1E37E /* LoginViewController.swift in Sources */,
 				557F8404228B22D800F1E37E /* Constants.swift in Sources */,
+				55B0B858228CD469000C9C3F /* ProfileViewController.swift in Sources */,
 				55A3E14F228C64D100AA5B07 /* UserDataService.swift in Sources */,
 				557F840D228B702300F1E37E /* RoundedButton.swift in Sources */,
 				557F8408228B2B5000F1E37E /* CreateAccountViewController.swift in Sources */,
 				557F840B228B621B00F1E37E /* AuthService.swift in Sources */,
+				55B0B854228CB513000C9C3F /* Extensions.swift in Sources */,
 				55159EFC228A0F7B0060B92F /* ChannelViewController.swift in Sources */,
+				55A3E151228C7CEC00AA5B07 /* AvatarPickerViewController.swift in Sources */,
 				551D758F228A1AA20081D999 /* SWRevealViewController.m in Sources */,
+				55A3E155228C96A000AA5B07 /* CircleImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

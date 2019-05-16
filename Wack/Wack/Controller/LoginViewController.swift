@@ -14,17 +14,15 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
 
     // MARK: Actions
 
-    @IBAction func closeTapped(_ sender: Any) {
+    @IBAction private func closeTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func createAccountButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: Constants.Segues.to_create_account, sender: nil)
+    @IBAction private func createAccountButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: Constants.Segues.toCreateAccount, sender: nil)
     }
 }

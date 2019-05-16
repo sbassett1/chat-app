@@ -11,62 +11,51 @@ import Foundation
 import SwiftyJSON
 
 class AuthService {
-    
+
     static let instance = AuthService()
-    
+
     private let defaults = UserDefaults.standard
-    
-    private var isLoggedIn: Bool {
+
+    var isLoggedIn: Bool {
         get {
-            return self.defaults.bool(forKey: Constants.UserDefaults.logged_in_key)
+            return self.defaults.bool(forKey: Constants.UserDefaults.loggedInKey)
         }
         set {
-            self.defaults.set(newValue, forKey: Constants.UserDefaults.logged_in_key)
+            self.defaults.set(newValue, forKey: Constants.UserDefaults.loggedInKey)
         }
     }
-    
-    public private(set) var authToken: String {
+
+    var authToken: String {
         get {
-            return self.defaults.value(forKey: Constants.UserDefaults.token_key) as! String
+            return self.defaults.value(forKey: Constants.UserDefaults.tokenKey) as! String
         }
         set {
-            self.defaults.set(newValue, forKey: Constants.UserDefaults.token_key)
+            self.defaults.set(newValue, forKey: Constants.UserDefaults.tokenKey)
         }
     }
-    
-    private var userEmail: String {
+
+    var userEmail: String {
         get {
-            return self.defaults.value(forKey: Constants.UserDefaults.user_email) as! String
+            return self.defaults.value(forKey: Constants.UserDefaults.userEmail) as! String
         }
         set {
-            self.defaults.set(newValue, forKey: Constants.UserDefaults.user_email)
+            self.defaults.set(newValue, forKey: Constants.UserDefaults.userEmail)
         }
     }
-    
-    func registerUser(email: String, password: String, isLoggingIn: Bool, completion: @escaping CompletionHandler) {
-        
-        let body = Constants.Body.register_user(email: email.lowercased(), password: password)
-        
+
+    func registerUser(email: String,
+                      password: String,
+                      completion: @escaping CompletionHandler) {
+
+        let body = Constants.Body.register_user(email: email, password: password)
+
         Alamofire.request(Constants.URL.register,
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.register_user).responseString { response in
-                            if response.result.error == nil {
-                                if isLoggingIn {
-                                    // Standard way to parse
-//                                    guard let json = response.result.value as? [String: Any],
-//                                        let email = json["user"] as? String,
-//                                        let token = json["token"] as? String else { return }
+                          headers: Constants.Header.registerUser).responseString { response in
 
-                                    // SwiftyJSON
-                                    guard let data = response.data else { return }
-                                    let json = JSON(data: data)
-                                    self.userEmail = json["user"].stringValue
-                                    self.authToken = json["token"].stringValue
-                                    
-                                    self.isLoggedIn = true
-                                }
+                            if response.result.error == nil {
                                 completion(true)
                             } else {
                                 completion(false)
@@ -74,23 +63,51 @@ class AuthService {
                             }
         }
     }
-    
+
+    func loginUser(email: String,
+                   password: String,
+                   completion: @escaping CompletionHandler) {
+
+        let body = Constants.Body.register_user(email: email, password: password)
+
+        Alamofire.request(Constants.URL.login,
+                          method: .post,
+                          parameters: body,
+                          encoding: JSONEncoding.default,
+                          headers: Constants.Header.registerUser).responseJSON { response in
+
+                            if response.result.error == nil {
+                                guard let data = response.data else { return }
+                                let json = JSON(data: data)
+                                self.userEmail = json["user"].stringValue
+                                self.authToken = json["token"].stringValue
+
+                                self.isLoggedIn = true
+                                completion(true)
+                            } else {
+                                completion(false)
+                                debugPrint(response.result.error as Any)
+                            }
+        }
+    }
+
     func setupUser(name: String,
                    email: String,
                    color: String,
                    avatarName: String,
                    completion: @escaping CompletionHandler) {
-        
+
         let body = Constants.Body.setup_user(name: name,
-                                             email: email.lowercased(),
+                                             email: email,
                                              avatarName: avatarName,
                                              color: color)
-        
-        Alamofire.request(Constants.URL.user_add,
+
+        Alamofire.request(Constants.URL.userAdd,
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.setup_user).responseJSON { response in
+                          headers: Constants.Header.setupUser).responseJSON { response in
+
                             if response.result.error == nil {
                                 guard let data = response.data else { return }
                                 let json = JSON(data: data)
@@ -99,7 +116,7 @@ class AuthService {
                                 let email = json["email"].stringValue
                                 let name = json["name"].stringValue
                                 let id = json["_id"].stringValue
-                                
+
                                 UserDataService.instance.setUserData(color: color,
                                                                      avatarName: avatarName,
                                                                      email: email,
