@@ -205,8 +205,8 @@
                                     <action selector="closeTapped:" destination="KGu-sL-lsh" eventType="touchUpInside" id="syz-8b-lgD"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="zuW-Gd-6bR">
-                                <rect key="frame" x="82" y="296" width="250" height="304"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zuW-Gd-6bR">
+                                <rect key="frame" x="82" y="305" width="250" height="286"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JpB-9a-qe7">
                                         <rect key="frame" x="70" y="0.0" width="110" height="40"/>
@@ -227,7 +227,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="d3u-fg-S1g">
-                                        <rect key="frame" x="0.0" y="66" width="250" height="106"/>
+                                        <rect key="frame" x="0.0" y="60" width="250" height="106"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pmU-Jb-Ute">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="30"/>
@@ -268,7 +268,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgH-mU-b1W" customClass="RoundedButton" customModule="Wack" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="198" width="250" height="50"/>
+                                        <rect key="frame" x="0.0" y="186" width="250" height="50"/>
                                         <color key="backgroundColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="NEZ-p2-dnk"/>
@@ -288,7 +288,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJS-9U-Sox">
-                                        <rect key="frame" x="0.0" y="274" width="250" height="30"/>
+                                        <rect key="frame" x="0.0" y="256" width="250" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="VaC-OH-MDq"/>
                                             <constraint firstAttribute="height" constant="30" id="oFD-5z-j4o"/>
