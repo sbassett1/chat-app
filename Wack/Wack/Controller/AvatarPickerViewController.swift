@@ -19,6 +19,8 @@ class AvatarPickerViewController: UIViewController {
 
     var avatarType = AvatarType.dark
 
+    // MARK: App Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,7 +51,8 @@ extension AvatarPickerViewController: UICollectionViewDelegate, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = self.avatarCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifiers.avatarCell, for: indexPath) as? AvatarCell else { return AvatarCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.ReuseIdentifiers.avatarCell,
+                                                            for: indexPath) as? AvatarCell else { return AvatarCell() }
         cell.configureCell(index: indexPath.item, type: self.avatarType)
         return cell
     }
@@ -66,7 +69,7 @@ extension AvatarPickerViewController: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let name = self.avatarType == .dark ? "dark" : "light"
-        UserDataService.instance.setAvatarName(avatarName: "\(name)\(indexPath.item)")
+        UserDataService.shared.setAvatarName(avatar: "\(name)\(indexPath.item)")
         self.dismiss(animated: true, completion: nil)
     }
 }

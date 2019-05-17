@@ -12,7 +12,9 @@ import SwiftyJSON
 
 class AuthService {
 
-    static let instance = AuthService()
+    static let shared = AuthService()
+
+    // MARK: Variables
 
     private let defaults = UserDefaults.standard
 
@@ -27,7 +29,8 @@ class AuthService {
 
     var authToken: String {
         get {
-            return self.defaults.value(forKey: Constants.UserDefaults.tokenKey) as! String
+            guard let value = self.defaults.value(forKey: Constants.UserDefaults.tokenKey) else { return "" }
+            return value as! String
         }
         set {
             self.defaults.set(newValue, forKey: Constants.UserDefaults.tokenKey)
@@ -36,18 +39,21 @@ class AuthService {
 
     var userEmail: String {
         get {
-            return self.defaults.value(forKey: Constants.UserDefaults.userEmail) as! String
+            guard let value = self.defaults.value(forKey: Constants.UserDefaults.userEmail) else { return "" }
+            return value as! String
         }
         set {
             self.defaults.set(newValue, forKey: Constants.UserDefaults.userEmail)
         }
     }
 
+    // MARK: Global Functions
+
     func registerUser(email: String,
                       password: String,
-                      completion: @escaping CompletionHandler) {
+                      completion: @escaping BoolCallBack) {
 
-        let body = Constants.Body.register_user(email: email, password: password)
+        let body = Constants.Body.registerUser(email: email, password: password)
 
         Alamofire.request(Constants.URL.register,
                           method: .post,
@@ -58,23 +64,23 @@ class AuthService {
                             if response.result.error == nil {
                                 completion(true)
                             } else {
-                                completion(false)
                                 debugPrint(response.result.error as Any)
+                                completion(false)
                             }
         }
     }
 
     func loginUser(email: String,
                    password: String,
-                   completion: @escaping CompletionHandler) {
+                   completion: @escaping BoolCallBack) {
 
-        let body = Constants.Body.register_user(email: email, password: password)
+        let body = Constants.Body.registerUser(email: email, password: password)
 
-        Alamofire.request(Constants.URL.login,
+        Alamofire.request(Constants.URL.loginNewUser,
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.registerUser).responseJSON { response in
+                          headers: Constants.Header.registerUser).validate().responseJSON { response in
 
                             if response.result.error == nil {
                                 guard let data = response.data else { return }
@@ -85,8 +91,8 @@ class AuthService {
                                 self.isLoggedIn = true
                                 completion(true)
                             } else {
-                                completion(false)
                                 debugPrint(response.result.error as Any)
+                                completion(false)
                             }
         }
     }
@@ -95,38 +101,66 @@ class AuthService {
                    email: String,
                    color: String,
                    avatarName: String,
-                   completion: @escaping CompletionHandler) {
+                   completion: @escaping BoolCallBack) {
 
-        let body = Constants.Body.setup_user(name: name,
-                                             email: email,
-                                             avatarName: avatarName,
-                                             color: color)
+        let body = Constants.Body.setupUser(name: name,
+                                            email: email,
+                                            avatarName: avatarName,
+                                            color: color)
 
         Alamofire.request(Constants.URL.userAdd,
                           method: .post,
                           parameters: body,
                           encoding: JSONEncoding.default,
-                          headers: Constants.Header.setupUser).responseJSON { response in
+                          headers: Constants.Header.setupUser(self.authToken)).responseJSON { response in
 
                             if response.result.error == nil {
                                 guard let data = response.data else { return }
-                                let json = JSON(data: data)
-                                let color = json["avatarColor"].stringValue
-                                let avatarName = json["avatarName"].stringValue
-                                let email = json["email"].stringValue
-                                let name = json["name"].stringValue
-                                let id = json["_id"].stringValue
-
-                                UserDataService.instance.setUserData(color: color,
-                                                                     avatarName: avatarName,
-                                                                     email: email,
-                                                                     name: name,
-                                                                     id: id)
+                                self.setUserInfo(data: data)
                                 completion(true)
                             } else {
-                                completion(false)
                                 debugPrint(response.result.error as Any)
+                                completion(false)
                             }
         }
+    }
+
+    func findUserByEmail(completion: @escaping BoolCallBack) {
+
+        Alamofire.request("\(Constants.URL.loginUserByEmail)\(self.userEmail)",
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: Constants.Header.setupUser(self.authToken)).responseJSON { response in
+
+                            if response.result.error == nil {
+                                guard let data = response.data else { return }
+                                self.setUserInfo(data: data)
+                                completion(true)
+                            } else {
+                                debugPrint(response.result.error as Any)
+                                completion(false)
+                            }
+        }
+    }
+
+    // MARK: Private Functions
+
+    private func setUserInfo(data: Data) {
+
+        // Fix this to use swift 4 method of json decoding
+
+        let json = JSON(data: data)
+        let color = json["avatarColor"].stringValue
+        let avatar = json["avatarName"].stringValue
+        let email = json["email"].stringValue
+        let name = json["name"].stringValue
+        let id = json["_id"].stringValue
+
+        UserDataService.shared.setUserData(color: color,
+                                           avatar: avatar,
+                                           email: email,
+                                           name: name,
+                                           id: id)
     }
 }

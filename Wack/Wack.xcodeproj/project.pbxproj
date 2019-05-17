@@ -11,6 +11,7 @@
 		55159EFC228A0F7B0060B92F /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55159EFB228A0F7B0060B92F /* ChannelViewController.swift */; };
 		551D758F228A1AA20081D999 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 551D758E228A1AA20081D999 /* SWRevealViewController.m */; };
 		551D7591228A1AC40081D999 /* Wack-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 551D7590228A1AC40081D999 /* Wack-Bridging-Header.h */; };
+		5521F30E228F085F00D9607E /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5521F30D228F085F00D9607E /* MessageCell.swift */; };
 		552C372C228A033400E0EE92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C372B228A033400E0EE92 /* AppDelegate.swift */; };
 		552C3731228A033400E0EE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552C372F228A033400E0EE92 /* Main.storyboard */; };
 		552C3733228A033500E0EE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552C3732228A033500E0EE92 /* Assets.xcassets */; };
@@ -28,6 +29,14 @@
 		55B0B858228CD469000C9C3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0B856228CD469000C9C3F /* ProfileViewController.swift */; };
 		55B0B859228CD469000C9C3F /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B0B857228CD469000C9C3F /* ProfileViewController.xib */; };
 		55BB4897228B11C200025206 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BB4896228B11C200025206 /* GradientView.swift */; };
+		55E5C6B4228DA88400ED6F79 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6B3228DA88400ED6F79 /* MessageService.swift */; };
+		55E5C6B7228DA92800ED6F79 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6B6228DA92800ED6F79 /* Channel.swift */; };
+		55E5C6B9228DB2EE00ED6F79 /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6B8228DB2EE00ED6F79 /* ChannelCell.swift */; };
+		55E5C6BE228DBAC300ED6F79 /* AddChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6BC228DBAC300ED6F79 /* AddChannelViewController.swift */; };
+		55E5C6BF228DBAC300ED6F79 /* AddChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55E5C6BD228DBAC300ED6F79 /* AddChannelViewController.xib */; };
+		55E5C6C1228DDE0300ED6F79 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6C0228DDE0300ED6F79 /* RoundedView.swift */; };
+		55E5C6C3228DFD4C00ED6F79 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6C2228DFD4C00ED6F79 /* SocketService.swift */; };
+		55E5C6C5228E241300ED6F79 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5C6C4228E241300ED6F79 /* Message.swift */; };
 		635448601005BCFF721790D3 /* Pods_Wack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172129D5A6F2040C37C83A09 /* Pods_Wack.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +48,7 @@
 		551D758D228A1AA20081D999 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		551D758E228A1AA20081D999 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		551D7590228A1AC40081D999 /* Wack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wack-Bridging-Header.h"; sourceTree = "<group>"; };
+		5521F30D228F085F00D9607E /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		552C3728228A033400E0EE92 /* Wack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		552C372B228A033400E0EE92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		552C3730228A033400E0EE92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +68,14 @@
 		55B0B856228CD469000C9C3F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		55B0B857228CD469000C9C3F /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		55BB4896228B11C200025206 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		55E5C6B3228DA88400ED6F79 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		55E5C6B6228DA92800ED6F79 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		55E5C6B8228DB2EE00ED6F79 /* ChannelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		55E5C6BC228DBAC300ED6F79 /* AddChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewController.swift; sourceTree = "<group>"; };
+		55E5C6BD228DBAC300ED6F79 /* AddChannelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddChannelViewController.xib; sourceTree = "<group>"; };
+		55E5C6C0228DDE0300ED6F79 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		55E5C6C2228DFD4C00ED6F79 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
+		55E5C6C4228E241300ED6F79 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EFCF1694E7F63B1F12980A0A /* Pods-Wack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wack/Pods-Wack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,11 +94,12 @@
 		55159EF6228A0F430060B92F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				55159EF9228A0F6F0060B92F /* ChatViewController.swift */,
-				55159EFB228A0F7B0060B92F /* ChannelViewController.swift */,
-				557F8405228B299900F1E37E /* LoginViewController.swift */,
-				557F8407228B2B5000F1E37E /* CreateAccountViewController.swift */,
+				55E5C6BC228DBAC300ED6F79 /* AddChannelViewController.swift */,
 				55A3E150228C7CEC00AA5B07 /* AvatarPickerViewController.swift */,
+				55159EFB228A0F7B0060B92F /* ChannelViewController.swift */,
+				55159EF9228A0F6F0060B92F /* ChatViewController.swift */,
+				557F8407228B2B5000F1E37E /* CreateAccountViewController.swift */,
+				557F8405228B299900F1E37E /* LoginViewController.swift */,
 				55B0B856228CD469000C9C3F /* ProfileViewController.swift */,
 			);
 			path = Controller;
@@ -119,6 +138,7 @@
 			children = (
 				552C372B228A033400E0EE92 /* AppDelegate.swift */,
 				557F8409228B620400F1E37E /* Services */,
+				55E5C6B5228DA8FE00ED6F79 /* Model */,
 				55BB4895228B11AF00025206 /* View */,
 				55159EF6228A0F430060B92F /* Controller */,
 				557F8402228B22C200F1E37E /* Utilities */,
@@ -142,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				557F840A228B621B00F1E37E /* AuthService.swift */,
+				55E5C6B3228DA88400ED6F79 /* MessageService.swift */,
+				55E5C6C2228DFD4C00ED6F79 /* SocketService.swift */,
 				55A3E14E228C64D100AA5B07 /* UserDataService.swift */,
 			);
 			path = Services;
@@ -150,6 +172,7 @@
 		55B0B85A228CD4DC000C9C3F /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				55E5C6BD228DBAC300ED6F79 /* AddChannelViewController.xib */,
 				55B0B857228CD469000C9C3F /* ProfileViewController.xib */,
 			);
 			path = XIBs;
@@ -158,15 +181,43 @@
 		55BB4895228B11AF00025206 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				552C372F228A033400E0EE92 /* Main.storyboard */,
-				552C3734228A033500E0EE92 /* LaunchScreen.storyboard */,
+				55A3E154228C96A000AA5B07 /* CircleImage.swift */,
 				55BB4896228B11C200025206 /* GradientView.swift */,
 				557F840C228B702300F1E37E /* RoundedButton.swift */,
-				55A3E152228C7F7A00AA5B07 /* AvatarCell.swift */,
-				55A3E154228C96A000AA5B07 /* CircleImage.swift */,
+				55E5C6C0228DDE0300ED6F79 /* RoundedView.swift */,
+				55E5C6BA228DB47F00ED6F79 /* Cells */,
+				55E5C6BB228DB5E700ED6F79 /* Storyboards */,
 				55B0B85A228CD4DC000C9C3F /* XIBs */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		55E5C6B5228DA8FE00ED6F79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55E5C6B6228DA92800ED6F79 /* Channel.swift */,
+				55E5C6C4228E241300ED6F79 /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		55E5C6BA228DB47F00ED6F79 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				55A3E152228C7F7A00AA5B07 /* AvatarCell.swift */,
+				55E5C6B8228DB2EE00ED6F79 /* ChannelCell.swift */,
+				5521F30D228F085F00D9607E /* MessageCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		55E5C6BB228DB5E700ED6F79 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				552C3734228A033500E0EE92 /* LaunchScreen.storyboard */,
+				552C372F228A033400E0EE92 /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		776142AE6F8E5E19F5E0E218 /* Frameworks */ = {
@@ -249,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				552C3736228A033500E0EE92 /* LaunchScreen.storyboard in Resources */,
+				55E5C6BF228DBAC300ED6F79 /* AddChannelViewController.xib in Resources */,
 				552C3733228A033500E0EE92 /* Assets.xcassets in Resources */,
 				55B0B859228CD469000C9C3F /* ProfileViewController.xib in Resources */,
 				552C3731228A033400E0EE92 /* Main.storyboard in Resources */,
@@ -326,20 +378,28 @@
 			files = (
 				551D7591228A1AC40081D999 /* Wack-Bridging-Header.h in Sources */,
 				552C372C228A033400E0EE92 /* AppDelegate.swift in Sources */,
+				55E5C6B7228DA92800ED6F79 /* Channel.swift in Sources */,
 				55A3E153228C7F7A00AA5B07 /* AvatarCell.swift in Sources */,
 				55BB4897228B11C200025206 /* GradientView.swift in Sources */,
 				55159EFA228A0F6F0060B92F /* ChatViewController.swift in Sources */,
 				557F8406228B299900F1E37E /* LoginViewController.swift in Sources */,
 				557F8404228B22D800F1E37E /* Constants.swift in Sources */,
 				55B0B858228CD469000C9C3F /* ProfileViewController.swift in Sources */,
+				55E5C6B9228DB2EE00ED6F79 /* ChannelCell.swift in Sources */,
 				55A3E14F228C64D100AA5B07 /* UserDataService.swift in Sources */,
+				5521F30E228F085F00D9607E /* MessageCell.swift in Sources */,
 				557F840D228B702300F1E37E /* RoundedButton.swift in Sources */,
 				557F8408228B2B5000F1E37E /* CreateAccountViewController.swift in Sources */,
+				55E5C6C3228DFD4C00ED6F79 /* SocketService.swift in Sources */,
 				557F840B228B621B00F1E37E /* AuthService.swift in Sources */,
 				55B0B854228CB513000C9C3F /* Extensions.swift in Sources */,
+				55E5C6B4228DA88400ED6F79 /* MessageService.swift in Sources */,
 				55159EFC228A0F7B0060B92F /* ChannelViewController.swift in Sources */,
 				55A3E151228C7CEC00AA5B07 /* AvatarPickerViewController.swift in Sources */,
 				551D758F228A1AA20081D999 /* SWRevealViewController.m in Sources */,
+				55E5C6BE228DBAC300ED6F79 /* AddChannelViewController.swift in Sources */,
+				55E5C6C5228E241300ED6F79 /* Message.swift in Sources */,
+				55E5C6C1228DDE0300ED6F79 /* RoundedView.swift in Sources */,
 				55A3E155228C96A000AA5B07 /* CircleImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

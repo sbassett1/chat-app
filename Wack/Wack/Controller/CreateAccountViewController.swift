@@ -21,25 +21,25 @@ class CreateAccountViewController: UIViewController {
 
     // MARK: Variables
 
-    var avatarName = "profileDefault"
+    var avatar = "profileDefault"
     var color = "[0.5, 0.5, 0.5, 1]"
     var backgroundColor: UIColor?
-    let userData = UserDataService.instance
-    let userAuth = AuthService.instance
+    let user = UserDataService.shared
+    let auth = AuthService.shared
 
     // MARK: App Life Cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.setupView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.userData.avatarName != "" {
-            self.avatarName = self.userData.avatarName
-            self.userImage.image = UIImage(named: self.avatarName)
-            if self.avatarName.contains("light") && self.backgroundColor == nil {
+        if self.user.avatar != "" {
+            self.avatar = self.user.avatar
+            self.userImage.image = UIImage(named: self.avatar)
+            if self.avatar.contains("light") && self.backgroundColor == nil {
                 self.userImage.backgroundColor = UIColor.lightGray
             }
         }
@@ -52,6 +52,9 @@ class CreateAccountViewController: UIViewController {
     }
 
     @IBAction private func createAccountButtonTapped(_ sender: Any) {
+
+        // Add alert to suggest changing the avatar and color
+
         self.loadingSpinner.isHidden = false
         self.loadingSpinner.startAnimating()
 
@@ -59,21 +62,21 @@ class CreateAccountViewController: UIViewController {
         guard let email = self.emailTextField.text, email != "" else { return }
         guard let password = self.passwordTextField.text, password != "" else { return }
 
-        self.userAuth.registerUser(email: email, password: password) { success in
+        self.auth.registerUser(email: email, password: password) { success in
             if success {
                 print("registration was successfull!!!!!")
-                self.userAuth.loginUser(email: email, password: password) { success in
+                self.auth.loginUser(email: email, password: password) { success in
                     if success {
-                        self.userAuth.setupUser(name: username,
-                                                email: email,
-                                                color: self.color,
-                                                avatarName: self.avatarName) { success in
-                                                    if success {
-                                                        self.loadingSpinner.isHidden = true
-                                                        self.loadingSpinner.stopAnimating()
-                                                        self.performSegue(withIdentifier: Constants.Segues.unwindToChannel, sender: nil)
-                                                        NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
-                                                    }
+                        self.auth.setupUser(name: username,
+                                            email: email,
+                                            color: self.color,
+                                            avatarName: self.avatar) { success in
+                                                if success {
+                                                    self.loadingSpinner.isHidden = true
+                                                    self.loadingSpinner.stopAnimating()
+                                                    self.performSegue(withIdentifier: Constants.Segues.unwindToChannel, sender: nil)
+                                                    NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
+                                                }
                         }
                     }
                 }
@@ -101,6 +104,10 @@ class CreateAccountViewController: UIViewController {
     // MARK: Private Functions
 
     private func setupView() {
+        self.usernameTextField.delegate = self
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+
         self.loadingSpinner.isHidden = true
 
         let tapOffKeyboard = UITapGestureRecognizer(target: self, action: #selector(self.handleTapOffKeyboard))
@@ -123,4 +130,14 @@ class CreateAccountViewController: UIViewController {
     @objc private func handleTapOffKeyboard() {
         self.view.endEditing(true)
     }
+}
+
+extension CreateAccountViewController: UITextFieldDelegate {
+
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.createAccountButtonTapped(self)
+        return true
+    }
+
 }

@@ -6,8 +6,6 @@
 //  Copyright © 2019 Stephen Bassett. All rights reserved.
 //
 
-import UIKit
-
 @IBDesignable
 class GradientView: UIView {
 

@@ -8,35 +8,41 @@
 
 import Foundation
 
-typealias CompletionHandler = (_ Success: Bool) -> ()
+typealias BoolCallBack = (_ Success: Bool) -> ()
+typealias DictCallBack = (_ typingUsers: [String: String]) -> ()
 
 public struct Constants {
 
     public struct URL {
         public static let base = "https://wack-chat-app.herokuapp.com/v1/"
         public static let register = "\(URL.base)account/register"
-        public static let login = "\(URL.base)account/login"
+        public static let loginNewUser = "\(URL.base)account/login"
         public static let userAdd = "\(URL.base)user/add"
+        public static let loginUserByEmail = "\(URL.base)user/byEmail/"
+        public static let getChannels = "\(URL.base)channel/"
+        public static let getMessages = "\(URL.base)message/byChannel/"
     }
 
     public struct Header {
         public static let registerUser = [
             "Content-Type": "application/json; charset=utf-8"
         ]
-        public static let setupUser = [
-            "Authorization": "Bearer \(AuthService.instance.authToken)",
-            "Content-Type": "application/json; charset=utf-8"
-        ]
+        public static func setupUser(_ authToken: String) -> [String: String] {
+            return [
+                "Authorization": "Bearer \(authToken)",
+                "Content-Type": "application/json; charset=utf-8"
+            ]
+        }
     }
 
     public struct Body {
-        public static func register_user(email: String, password: String) -> [String: String] {
+        public static func registerUser(email: String, password: String) -> [String: String] {
             return [
                 "email": email.lowercased(),
                 "password": password
             ]
         }
-        public static func setup_user(name: String, email: String, avatarName: String, color: String) -> [String: String] {
+        public static func setupUser(name: String, email: String, avatarName: String, color: String) -> [String: String] {
             return [
                 "name": name,
                 "email": email.lowercased(),
@@ -61,6 +67,8 @@ public struct Constants {
 
     public struct ReuseIdentifiers {
         public static let avatarCell = "avatarCell"
+        public static let channelCell = "channelCell"
+        public static let messageCell = "messageCell"
     }
 
     public struct Colors {
@@ -68,6 +76,8 @@ public struct Constants {
     }
 
     public struct Notifications {
-        public static let userDataChanged = Notification.Name("notifyUserDataChanged")
+        public static let userDataChanged = Notification.Name("userDataChanged")
+        public static let channelsLoaded = Notification.Name("channelsLoaded")
+        public static let channelSelected = Notification.Name("channelSelected")
     }
 }
