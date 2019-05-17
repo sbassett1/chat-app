@@ -74,8 +74,8 @@ class LoginViewController: UIViewController {
         self.view.addGestureRecognizer(tapOffKeyboard)
 
         let attributes = [NSAttributedString.Key.foregroundColor: Constants.Colors.placeholder]
-        self.emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: attributes)
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: attributes)
+        self.emailTextField.attributedPlaceholder = NSAttributedString(string: Constants.Defaults.email, attributes: attributes)
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: Constants.Defaults.password, attributes: attributes)
     }
 
     @objc private func handleTapOffKeyboard() {

@@ -23,6 +23,7 @@ class ChannelViewController: UIViewController {
     let user = UserDataService.shared
     let auth = AuthService.shared
     let comms = MessageService.shared
+    let socket = SocketService.shared
 
     var isLoggedIn: Bool {
         return self.auth.isLoggedIn
@@ -46,7 +47,7 @@ class ChannelViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.addChannelButton.isHidden = !self.isLoggedIn
-        self.channelsLabel.text = !self.isLoggedIn ? "Sign in to add and join channels" : "CHANNELS"
+        self.channelsLabel.text = !self.isLoggedIn ? Constants.Labels.signInTo : Constants.Labels.channels
     }
 
     // MARK: Actions
@@ -106,7 +107,7 @@ class ChannelViewController: UIViewController {
             self.userImageView.image = UIImage(named: self.user.avatar)
             self.userImageView.backgroundColor = self.user.color.asUIColor
         } else {
-            self.loginButton.setTitle("Login", for: .normal)
+            self.loginButton.setTitle(Constants.Labels.login, for: .normal)
             self.userImageView.image = #imageLiteral(resourceName: "menuProfileIcon")
             self.userImageView.backgroundColor = UIColor.clear
             self.channelTableView.reloadData()
@@ -114,8 +115,15 @@ class ChannelViewController: UIViewController {
     }
 
     private func socketGetChannel() {
-        SocketService.shared.getChannel { success in
+        self.socket.getChannel { success in
             if success {
+                self.channelTableView.reloadData()
+            }
+        }
+
+        self.socket.getChatMessage { newMessage in
+            if newMessage.channelId != self.comms.selectedChannel?._id && self.isLoggedIn {
+                self.comms.unreadChannels.append(newMessage.channelId)
                 self.channelTableView.reloadData()
             }
         }
@@ -144,6 +152,14 @@ extension ChannelViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let channel = self.comms.channels[indexPath.row]
         self.comms.selectedChannel = channel
+
+        if !self.comms.unreadChannels.isEmpty {
+            self.comms.unreadChannels = self.comms.unreadChannels.filter { $0 != channel._id }
+        }
+        let index = IndexPath(row: indexPath.row, section: 0)
+        tableView.reloadRows(at: [index], with: .none)
+        tableView.selectRow(at: index, animated: false, scrollPosition: .none)
+
         NotificationCenter.default.post(name: Constants.Notifications.channelSelected, object: nil)
         self.revealViewController()?.revealToggle(animated: true)
     }

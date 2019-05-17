@@ -49,8 +49,8 @@ class AddChannelViewController: UIViewController {
         self.descriptionTextField.delegate = self
 
         let attributes = [NSAttributedString.Key.foregroundColor: Constants.Colors.placeholder]
-        self.nameTextField.attributedPlaceholder = NSAttributedString(string: "name", attributes: attributes)
-        self.descriptionTextField.attributedPlaceholder = NSAttributedString(string: "description", attributes: attributes)
+        self.nameTextField.attributedPlaceholder = NSAttributedString(string: Constants.Defaults.name, attributes: attributes)
+        self.descriptionTextField.attributedPlaceholder = NSAttributedString(string: Constants.Defaults.description, attributes: attributes)
     }
 
     @objc private func dismissView() {
