@@ -8,7 +8,8 @@
 
 import Foundation
 
-typealias CompletionHandler = (_ Success: Bool) -> ()
+typealias BoolCallBack = (_ Success: Bool) -> ()
+typealias DictCallBack = (_ typingUsers: [String: String]) -> ()
 
 public struct Constants {
 

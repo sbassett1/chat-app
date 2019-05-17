@@ -84,7 +84,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="URc-7Z-WK0">
-                                <rect key="frame" x="0.0" y="77" width="414" height="715"/>
+                                <rect key="frame" x="0.0" y="77" width="414" height="745"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" rowHeight="71" id="48P-Bf-UGs" customClass="MessageCell" customModule="Wack" customModuleProvider="target">
@@ -143,15 +143,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IR4-ub-1Kr">
+                                <rect key="frame" x="8" y="816" width="398" height="0.0"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="s5h-Lb-qdt" firstAttribute="trailing" secondItem="RGe-7W-IZO" secondAttribute="trailing" constant="8" id="0JB-Tk-Tce"/>
                             <constraint firstItem="s5h-Lb-qdt" firstAttribute="trailing" secondItem="URc-7Z-WK0" secondAttribute="trailing" id="2dC-pg-z51"/>
-                            <constraint firstItem="naO-vt-XNT" firstAttribute="top" secondItem="URc-7Z-WK0" secondAttribute="bottom" constant="30" id="53Q-Ro-khi"/>
+                            <constraint firstItem="naO-vt-XNT" firstAttribute="top" secondItem="URc-7Z-WK0" secondAttribute="bottom" id="53Q-Ro-khi"/>
                             <constraint firstItem="RGe-7W-IZO" firstAttribute="centerY" secondItem="naO-vt-XNT" secondAttribute="centerY" id="7QA-ND-1X1"/>
                             <constraint firstItem="zuO-ls-LNJ" firstAttribute="top" secondItem="r60-ka-P3A" secondAttribute="top" id="7d7-25-bBl"/>
+                            <constraint firstItem="s5h-Lb-qdt" firstAttribute="trailing" secondItem="IR4-ub-1Kr" secondAttribute="trailing" constant="8" id="LqK-yh-SrQ"/>
+                            <constraint firstItem="naO-vt-XNT" firstAttribute="top" secondItem="IR4-ub-1Kr" secondAttribute="bottom" constant="6" id="SFM-uA-tK6"/>
                             <constraint firstItem="naO-vt-XNT" firstAttribute="leading" secondItem="s5h-Lb-qdt" secondAttribute="leading" id="TLE-d9-J5M"/>
+                            <constraint firstItem="IR4-ub-1Kr" firstAttribute="leading" secondItem="s5h-Lb-qdt" secondAttribute="leading" constant="8" id="VM3-fd-Xhb"/>
                             <constraint firstItem="zuO-ls-LNJ" firstAttribute="leading" secondItem="s5h-Lb-qdt" secondAttribute="leading" id="WCo-Ce-26Y"/>
                             <constraint firstItem="zuO-ls-LNJ" firstAttribute="trailing" secondItem="s5h-Lb-qdt" secondAttribute="trailing" id="Xga-WX-BDy"/>
                             <constraint firstItem="URc-7Z-WK0" firstAttribute="leading" secondItem="s5h-Lb-qdt" secondAttribute="leading" id="bN5-uS-Dli"/>
@@ -163,10 +172,12 @@
                     </view>
                     <connections>
                         <outlet property="channelNameLabel" destination="nSb-I3-Awe" id="Iaf-Bh-wH9"/>
+                        <outlet property="chatTableBottomConstraint" destination="53Q-Ro-khi" id="wyu-oL-xdz"/>
                         <outlet property="chatTableView" destination="URc-7Z-WK0" id="fRl-uQ-dkE"/>
                         <outlet property="menuButton" destination="dLf-dn-vj0" id="cqN-3A-4up"/>
                         <outlet property="messageTextField" destination="naO-vt-XNT" id="pS5-sJ-4le"/>
                         <outlet property="sendMessageButton" destination="RGe-7W-IZO" id="6eM-0u-Dmn"/>
+                        <outlet property="typingUsersLabel" destination="IR4-ub-1Kr" id="QQ2-of-Jtk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ohv-rL-ouN" userLabel="First Responder" sceneMemberID="firstResponder"/>

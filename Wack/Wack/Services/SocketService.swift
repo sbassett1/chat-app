@@ -38,12 +38,12 @@ class SocketService: NSObject {
 
     func addChannel(channelName: String,
                     channelDescription: String,
-                    completion: @escaping CompletionHandler) {
+                    completion: @escaping BoolCallBack) {
         self.socket.emit("newChannel", channelName, channelDescription)
         completion(true)
     }
 
-    func getChannel(completion: @escaping CompletionHandler) {
+    func getChannel(completion: @escaping BoolCallBack) {
         self.socket.on("channelCreated") { dataArray, _ in
             guard let name = dataArray[0] as? String,
                 let description = dataArray[1] as? String,
@@ -58,7 +58,7 @@ class SocketService: NSObject {
     func addMessage(messageBody: String,
                     userId: String,
                     channelId: String,
-                    completion: @escaping CompletionHandler) {
+                    completion: @escaping BoolCallBack) {
         let user = UserDataService.shared
         self.socket.emit("newMessage",
                          messageBody,
@@ -70,7 +70,7 @@ class SocketService: NSObject {
         completion(true)
     }
 
-    func getChatMessage(completion: @escaping CompletionHandler) {
+    func getChatMessage(completion: @escaping BoolCallBack) {
         self.socket.on("messageCreated") { dataArray, _ in
             guard let message = dataArray[0] as? String,
                 let channelId = dataArray[2] as? String,
@@ -95,6 +95,13 @@ class SocketService: NSObject {
             } else {
                 completion(false)
             }
+        }
+    }
+
+    func getTypingUsers(_ completion: @escaping DictCallBack) {
+        self.socket.on("userTypingUpdate") { dataArray, _ in
+            guard let typingUsers = dataArray.first as? [String: String] else { return }
+            completion(typingUsers)
         }
     }
 

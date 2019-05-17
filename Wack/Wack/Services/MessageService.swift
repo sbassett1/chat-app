@@ -23,7 +23,7 @@ class MessageService {
 
     // MARK: Global Functions
 
-    func findAllChannels(completion: @escaping CompletionHandler) {
+    func findAllChannels(completion: @escaping BoolCallBack) {
 
         Alamofire.request(Constants.URL.getChannels,
                           method: .get,
@@ -67,7 +67,7 @@ class MessageService {
         }
     }
 
-    func findAllMessagesForChannel(channelId: String, completion: @escaping CompletionHandler) {
+    func findAllMessagesForChannel(channelId: String, completion: @escaping BoolCallBack) {
 
         Alamofire.request("\(Constants.URL.getMessages)\(channelId)",
                           method: .get,
