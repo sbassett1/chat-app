@@ -25,10 +25,13 @@ class ChannelCell: UITableViewCell {
     // MARK: Global Functions
 
     func configureCell(channel: Channel) {
-        let name = channel.name // ?? ""
+        let name = channel.name
         self.channelLabel.text = "#\(name)"
-    }
+        self.channelLabel.font = UIFont(name: Constants.Fonts.regular, size: 17)
 
-    // MARK: Private Functions
+        for id in MessageService.shared.unreadChannels where id == channel._id {
+            self.channelLabel.font = UIFont(name: Constants.Fonts.bold, size: 22)
+        }
+    }
 
 }

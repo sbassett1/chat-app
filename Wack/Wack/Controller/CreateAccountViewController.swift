@@ -21,8 +21,8 @@ class CreateAccountViewController: UIViewController {
 
     // MARK: Variables
 
-    var avatar = "profileDefault"
-    var color = "[0.5, 0.5, 0.5, 1]"
+    var avatar = Constants.Defaults.avatar
+    var color = Constants.Defaults.color
     var backgroundColor: UIColor?
     let user = UserDataService.shared
     let auth = AuthService.shared
@@ -39,7 +39,7 @@ class CreateAccountViewController: UIViewController {
         if self.user.avatar != "" {
             self.avatar = self.user.avatar
             self.userImage.image = UIImage(named: self.avatar)
-            if self.avatar.contains("light") && self.backgroundColor == nil {
+            if self.avatar.contains(Constants.Colors.light) && self.backgroundColor == nil {
                 self.userImage.backgroundColor = UIColor.lightGray
             }
         }
@@ -64,7 +64,6 @@ class CreateAccountViewController: UIViewController {
 
         self.auth.registerUser(email: email, password: password) { success in
             if success {
-                print("registration was successfull!!!!!")
                 self.auth.loginUser(email: email, password: password) { success in
                     if success {
                         self.auth.setupUser(name: username,
@@ -118,9 +117,9 @@ class CreateAccountViewController: UIViewController {
         self.avatarImageView.isUserInteractionEnabled = true
 
         let attributes = [NSAttributedString.Key.foregroundColor: Constants.Colors.placeholder]
-        self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username", attributes: attributes)
-        self.emailTextField.attributedPlaceholder = NSAttributedString(string: "email", attributes: attributes)
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password", attributes: attributes)
+        self.usernameTextField.attributedPlaceholder = NSAttributedString(string: Constants.Defaults.username, attributes: attributes)
+        self.emailTextField.attributedPlaceholder = NSAttributedString(string: Constants.Defaults.email, attributes: attributes)
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: Constants.Defaults.password, attributes: attributes)
     }
 
     @objc private func segueToAvatarPicker() {

@@ -64,7 +64,7 @@ class ChatViewController: UIViewController {
                                     if success {
                                         self.messageTextField.text = ""
                                         self.sendMessageButton.isHidden = true
-                                        self.socket.socket.emit("stopType", self.user.name, channelId)
+                                        self.socket.socket.emit(Constants.Socket.stop, self.user.name, channelId)
                                     }
             }
         }
@@ -73,7 +73,7 @@ class ChatViewController: UIViewController {
     @IBAction func messageTextFieldEditing(_ sender: Any) {
         guard let channelId = self.comms.selectedChannel?._id else { return }
         let typing = !(self.messageTextField.text?.isEmpty ?? false)
-        let event = typing ? "startType" : "stopType"
+        let event = typing ? Constants.Socket.start : Constants.Socket.stop
         self.sendMessageButton.isHidden = !typing
         self.socket.socket.emit(event, self.user.name, channelId)
     }
@@ -95,9 +95,9 @@ class ChatViewController: UIViewController {
     @objc private func userDataDidChange() {
         if self.isLoggedIn {
             self.onLoginGetMessages()
-            self.channelNameLabel.text = "Wack"
+            self.channelNameLabel.text = Constants.Labels.wack
         } else {
-            self.channelNameLabel.text = "Please Log In"
+            self.channelNameLabel.text = Constants.Labels.signIn
             self.chatTableView.reloadData()
         }
     }
@@ -123,7 +123,7 @@ class ChatViewController: UIViewController {
                     self.comms.selectedChannel = self.comms.channels.first
                     self.updateWithChannel()
                 } else {
-                    self.channelNameLabel.text = "No Channels Joined"
+                    self.channelNameLabel.text = Constants.Labels.noChannels
                 }
             }
         }
@@ -160,12 +160,13 @@ class ChatViewController: UIViewController {
 
     private func adjustTableBottom() {
         let lastIndex = IndexPath(row: self.comms.messages.count - 1, section: 0)
-        self.chatTableView.scrollToRow(at: lastIndex, at: .bottom, animated: true)
+        self.chatTableView.scrollToRow(at: lastIndex, at: .bottom, animated: false)
     }
 
     private func socketGetMessage() {
-        self.socket.getChatMessage { success in
-            if success {
+        self.socket.getChatMessage { newMessage in
+            if newMessage.channelId == self.comms.selectedChannel?._id && self.isLoggedIn {
+                self.comms.messages.append(newMessage)
                 self.chatTableView.reloadData()
                 if !self.comms.messages.isEmpty {
                     self.adjustTableBottom()
