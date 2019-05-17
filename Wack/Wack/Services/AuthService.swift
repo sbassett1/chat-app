@@ -51,7 +51,7 @@ class AuthService {
 
     func registerUser(email: String,
                       password: String,
-                      completion: @escaping CompletionHandler) {
+                      completion: @escaping BoolCallBack) {
 
         let body = Constants.Body.registerUser(email: email, password: password)
 
@@ -72,7 +72,7 @@ class AuthService {
 
     func loginUser(email: String,
                    password: String,
-                   completion: @escaping CompletionHandler) {
+                   completion: @escaping BoolCallBack) {
 
         let body = Constants.Body.registerUser(email: email, password: password)
 
@@ -101,7 +101,7 @@ class AuthService {
                    email: String,
                    color: String,
                    avatarName: String,
-                   completion: @escaping CompletionHandler) {
+                   completion: @escaping BoolCallBack) {
 
         let body = Constants.Body.setupUser(name: name,
                                             email: email,
@@ -125,7 +125,7 @@ class AuthService {
         }
     }
 
-    func findUserByEmail(completion: @escaping CompletionHandler) {
+    func findUserByEmail(completion: @escaping BoolCallBack) {
 
         Alamofire.request("\(Constants.URL.loginUserByEmail)\(self.userEmail)",
                           method: .get,

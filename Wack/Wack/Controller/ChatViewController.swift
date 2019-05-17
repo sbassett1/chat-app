@@ -17,16 +17,19 @@ class ChatViewController: UIViewController {
     @IBOutlet private var messageTextField: UITextField!
     @IBOutlet private var chatTableView: UITableView!
     @IBOutlet private var sendMessageButton: UIButton!
+    @IBOutlet private var typingUsersLabel: UILabel!
+    @IBOutlet private var chatTableBottomConstraint: NSLayoutConstraint!
 
     // MARK: Variables
 
     var isTyping = false
-    let user = AuthService.shared
+    let auth = AuthService.shared
+    let user = UserDataService.shared
     let comms = MessageService.shared
     let socket = SocketService.shared
 
     var isLoggedIn: Bool {
-        return self.user.isLoggedIn
+        return self.auth.isLoggedIn
     }
 
     // MARK: App Life Cycle
@@ -60,14 +63,19 @@ class ChatViewController: UIViewController {
                                    channelId: channelId) { success in
                                     if success {
                                         self.messageTextField.text = ""
-//                                        self.messageTextField.resignFirstResponder()
+                                        self.sendMessageButton.isHidden = true
+                                        self.socket.socket.emit("stopType", self.user.name, channelId)
                                     }
             }
         }
     }
 
     @IBAction func messageTextFieldEditing(_ sender: Any) {
-        self.sendMessageButton.isHidden = self.messageTextField.text?.isEmpty ?? true
+        guard let channelId = self.comms.selectedChannel?._id else { return }
+        let typing = !(self.messageTextField.text?.isEmpty ?? false)
+        let event = typing ? "startType" : "stopType"
+        self.sendMessageButton.isHidden = !typing
+        self.socket.socket.emit(event, self.user.name, channelId)
     }
 
     // MARK: Private Functions
@@ -126,6 +134,7 @@ class ChatViewController: UIViewController {
         self.comms.findAllMessagesForChannel(channelId: channelId) { success in
             if success {
                 self.chatTableView.reloadData()
+                self.adjustTableBottom()
             }
         }
     }
@@ -135,7 +144,7 @@ class ChatViewController: UIViewController {
         let notification = NotificationCenter.default
 
         if self.isLoggedIn {
-            self.user.findUserByEmail { _ in
+            self.auth.findUserByEmail { _ in
                 notification.post(name: Constants.Notifications.userDataChanged, object: nil)
             }
         }
@@ -149,14 +158,50 @@ class ChatViewController: UIViewController {
                                  object: nil)
     }
 
+    private func adjustTableBottom() {
+        let lastIndex = IndexPath(row: self.comms.messages.count - 1, section: 0)
+        self.chatTableView.scrollToRow(at: lastIndex, at: .bottom, animated: true)
+    }
+
     private func socketGetMessage() {
         self.socket.getChatMessage { success in
             if success {
                 self.chatTableView.reloadData()
                 if !self.comms.messages.isEmpty {
-                    let lastIndex = IndexPath(row: self.comms.messages.count - 1, section: 0)
-                    self.chatTableView.scrollToRow(at: lastIndex, at: .bottom, animated: true)
+                    self.adjustTableBottom()
                 }
+            }
+        }
+
+        self.socket.getTypingUsers { typingUsers in
+            guard let channelId = self.comms.selectedChannel?._id else { return }
+            var names = ""
+            var numberOfUsersTyping = 0
+
+            for (typingUser, channel) in typingUsers {
+                if typingUser != self.user.name && channel == channelId {
+                    if names.isEmpty {
+                        names = typingUser
+                    } else {
+                        names = "\(names), \(typingUser)"
+                    }
+                    numberOfUsersTyping += 1
+                }
+            }
+
+            if numberOfUsersTyping > 0 && self.isLoggedIn {
+                var verb = "is"
+                if numberOfUsersTyping > 1 {
+                    verb = "are"
+                }
+                self.typingUsersLabel.text = "\(names) \(verb) typing a message"
+            } else {
+                self.typingUsersLabel.text = ""
+            }
+            self.typingUsersLabel.backgroundColor = names.isEmpty ? UIColor.clear : UIColor.white
+            self.chatTableBottomConstraint.constant = names.isEmpty ? 0 : 30
+            if !(self.messageTextField.text?.isEmpty ?? true) && names.isEmpty {
+                self.adjustTableBottom()
             }
         }
     }
@@ -186,8 +231,12 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
 extension ChatViewController: UITextFieldDelegate {
 
     internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.sendMessageButtonTapped(self)
-        return true
+        if !(self.messageTextField.text?.isEmpty ?? true) {
+            self.sendMessageButtonTapped(self)
+            return true
+        } else {
+            return false
+        }
     }
 
 }

@@ -181,11 +181,11 @@
 		55BB4895228B11AF00025206 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				55E5C6BA228DB47F00ED6F79 /* Cells */,
 				55A3E154228C96A000AA5B07 /* CircleImage.swift */,
 				55BB4896228B11C200025206 /* GradientView.swift */,
 				557F840C228B702300F1E37E /* RoundedButton.swift */,
 				55E5C6C0228DDE0300ED6F79 /* RoundedView.swift */,
+				55E5C6BA228DB47F00ED6F79 /* Cells */,
 				55E5C6BB228DB5E700ED6F79 /* Storyboards */,
 				55B0B85A228CD4DC000C9C3F /* XIBs */,
 			);
