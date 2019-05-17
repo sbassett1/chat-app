@@ -14,14 +14,15 @@ class ChatViewController: UIViewController {
 
     @IBOutlet private var menuButton: UIButton!
     @IBOutlet private var channelNameLabel: UILabel!
+    @IBOutlet private var messageTextField: UITextField!
 
     // MARK: Variables
 
-    let userAuth = AuthService.shared
-    let commData = MessageService.shared
+    let user = AuthService.shared
+    let comms = MessageService.shared
 
     var isLoggedIn: Bool {
-        return self.userAuth.isLoggedIn
+        return self.user.isLoggedIn
     }
 
     // MARK: App Life Cycle
@@ -30,17 +31,38 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         self.addGestures()
         self.registerNotifications()
+        self.view.bindToKeyboard()
+    }
+
+    // MARK: Actions
+
+    @IBAction private func sendMessageButtonTapped(_ sender: Any) {
+        if self.isLoggedIn {
+            guard let channelId = self.comms.selectedChannel?._id,
+                let message = self.messageTextField.text else { return }
+            SocketService.shared.addMessage(messageBody: message,
+                                            userId: UserDataService.shared.id,
+                                            channelId: channelId) { success in
+                                                if success {
+                                                    self.messageTextField.text = ""
+                                                    self.messageTextField.resignFirstResponder()
+                                                }
+            }
+        }
     }
 
     // MARK: Private Functions
 
     private func addGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+        // SWReveal Gestures
         guard let revealVC = self.revealViewController(),
             let panGesture = revealVC.panGestureRecognizer(),
             let tapGesture = revealVC.tapGestureRecognizer() else { return }
         self.menuButton.addTarget(revealVC, action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         self.view.addGestureRecognizer(panGesture)
         self.view.addGestureRecognizer(tapGesture)
+        self.view.addGestureRecognizer(tap)
     }
 
     @objc private func userDataDidChange() {
@@ -56,16 +78,21 @@ class ChatViewController: UIViewController {
         self.updateWithChannel()
     }
 
+    @objc private func handleTap() {
+        self.view.endEditing(true)
+    }
+
     private func updateWithChannel() {
-        let channelName = self.commData.selectedChannel?.name ?? ""
+        let channelName = self.comms.selectedChannel?.name ?? ""
         channelNameLabel.text = "#\(channelName)"
+        self.getMessages()
     }
 
     private func onLoginGetMessages() {
-        self.commData.findAllChannels { success in
+        self.comms.findAllChannels { success in
             if success {
-                if !self.commData.channels.isEmpty {
-                    self.commData.selectedChannel = self.commData.channels.first
+                if !self.comms.channels.isEmpty {
+                    self.comms.selectedChannel = self.comms.channels.first
                     self.updateWithChannel()
                 } else {
                     self.channelNameLabel.text = "No Channels Joined"
@@ -75,8 +102,8 @@ class ChatViewController: UIViewController {
     }
 
     private func getMessages() {
-        guard let channelId = self.commData.selectedChannel?._id else { return }
-        self.commData.findAllMessagesForChannel(channelId: channelId) { success in
+        guard let channelId = self.comms.selectedChannel?._id else { return }
+        self.comms.findAllMessagesForChannel(channelId: channelId) { success in
             if success {
 
             }
@@ -88,7 +115,7 @@ class ChatViewController: UIViewController {
         let notification = NotificationCenter.default
 
         if self.isLoggedIn {
-            self.userAuth.findUserByEmail { _ in
+            self.user.findUserByEmail { _ in
                 notification.post(name: Constants.Notifications.userDataChanged, object: nil)
             }
         }

@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
 
     // MARK: Variables
 
-    let userAuth = AuthService.shared
+    let auth = AuthService.shared
 
     // MARK: App Life Cycle
 
@@ -46,9 +46,9 @@ class LoginViewController: UIViewController {
             let password = self.passwordTextField.text,
             password != "" else { return } // alert user to enter text
 
-        self.userAuth.loginUser(email: email, password: password) { success in
+        self.auth.loginUser(email: email, password: password) { success in
             if success {
-                self.userAuth.findUserByEmail { success in
+                self.auth.findUserByEmail { success in
                     if success {
                         NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
                         self.dismiss(animated: true, completion: nil)
