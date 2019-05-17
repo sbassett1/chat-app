@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
 
     // MARK: Variables
 
-    let userData = UserDataService.shared
+    let user = UserDataService.shared
 
     // MARK: App Life Cycle
 
@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction private func logoutTapped(_ sender: Any) {
-        self.userData.logoutUser()
+        self.user.logoutUser()
         NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
         self.dismissView()
     }
@@ -43,10 +43,10 @@ class ProfileViewController: UIViewController {
     // MARK: Private Functions
 
     private func setupView() {
-        self.profileImageView.image = UIImage(named: self.userData.avatarName)
-        self.profileImageView.backgroundColor = self.userData.color.asUIColor
-        self.usernameLabel.text = self.userData.name
-        self.emailLabel.text = self.userData.email
+        self.profileImageView.image = UIImage(named: self.user.avatarName)
+        self.profileImageView.backgroundColor = self.user.color.asUIColor
+        self.usernameLabel.text = self.user.name
+        self.emailLabel.text = self.user.email
 
         let tapToDismiss = UITapGestureRecognizer(target: self, action: #selector(self.dismissView))
         let swipeDownToDismiss = UISwipeGestureRecognizer(target: self, action: #selector(self.dismissView))

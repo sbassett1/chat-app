@@ -24,8 +24,8 @@ class CreateAccountViewController: UIViewController {
     var avatarName = "profileDefault"
     var color = "[0.5, 0.5, 0.5, 1]"
     var backgroundColor: UIColor?
-    let userData = UserDataService.shared
-    let userAuth = AuthService.shared
+    let user = UserDataService.shared
+    let auth = AuthService.shared
 
     // MARK: App Life Cycle
 
@@ -36,8 +36,8 @@ class CreateAccountViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.userData.avatarName != "" {
-            self.avatarName = self.userData.avatarName
+        if self.user.avatarName != "" {
+            self.avatarName = self.user.avatarName
             self.userImage.image = UIImage(named: self.avatarName)
             if self.avatarName.contains("light") && self.backgroundColor == nil {
                 self.userImage.backgroundColor = UIColor.lightGray
@@ -62,21 +62,21 @@ class CreateAccountViewController: UIViewController {
         guard let email = self.emailTextField.text, email != "" else { return }
         guard let password = self.passwordTextField.text, password != "" else { return }
 
-        self.userAuth.registerUser(email: email, password: password) { success in
+        self.auth.registerUser(email: email, password: password) { success in
             if success {
                 print("registration was successfull!!!!!")
-                self.userAuth.loginUser(email: email, password: password) { success in
+                self.auth.loginUser(email: email, password: password) { success in
                     if success {
-                        self.userAuth.setupUser(name: username,
-                                                email: email,
-                                                color: self.color,
-                                                avatarName: self.avatarName) { success in
-                                                    if success {
-                                                        self.loadingSpinner.isHidden = true
-                                                        self.loadingSpinner.stopAnimating()
-                                                        self.performSegue(withIdentifier: Constants.Segues.unwindToChannel, sender: nil)
-                                                        NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
-                                                    }
+                        self.auth.setupUser(name: username,
+                                            email: email,
+                                            color: self.color,
+                                            avatarName: self.avatarName) { success in
+                                                if success {
+                                                    self.loadingSpinner.isHidden = true
+                                                    self.loadingSpinner.stopAnimating()
+                                                    self.performSegue(withIdentifier: Constants.Segues.unwindToChannel, sender: nil)
+                                                    NotificationCenter.default.post(name: Constants.Notifications.userDataChanged, object: nil)
+                                                }
                         }
                     }
                 }

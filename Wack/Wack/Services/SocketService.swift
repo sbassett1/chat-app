@@ -53,4 +53,20 @@ class SocketService: NSObject {
             completion(true)
         }
     }
+
+    func addMessage(messageBody: String,
+                    userId: String,
+                    channelId: String,
+                    completion: @escaping CompletionHandler) {
+        let user = UserDataService.shared
+        self.socket.emit("newMessage",
+                         messageBody,
+                         userId,
+                         channelId,
+                         user.name,
+                         user.avatarName,
+                         user.color)
+        completion(true)
+    }
+
 }

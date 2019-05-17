@@ -20,12 +20,12 @@ class ChannelViewController: UIViewController {
 
     // MARK: Variables
 
-    let userData = UserDataService.shared
-    let userAuth = AuthService.shared
-    let commData = MessageService.shared
+    let user = UserDataService.shared
+    let auth = AuthService.shared
+    let comms = MessageService.shared
 
     var isLoggedIn: Bool {
-        return self.userAuth.isLoggedIn
+        return self.auth.isLoggedIn
     }
 
     // MARK: App Life Cycle
@@ -101,9 +101,9 @@ class ChannelViewController: UIViewController {
 
     private func setupUserInfo() {
         if self.isLoggedIn {
-            self.loginButton.setTitle(self.userData.name, for: .normal)
-            self.userImageView.image = UIImage(named: self.userData.avatarName)
-            self.userImageView.backgroundColor = self.userData.color.asUIColor
+            self.loginButton.setTitle(self.user.name, for: .normal)
+            self.userImageView.image = UIImage(named: self.user.avatarName)
+            self.userImageView.backgroundColor = self.user.color.asUIColor
         } else {
             self.loginButton.setTitle("Login", for: .normal)
             self.userImageView.image = #imageLiteral(resourceName: "menuProfileIcon")
@@ -129,19 +129,19 @@ extension ChannelViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.commData.channels.count
+        return self.comms.channels.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = self.channelTableView.dequeueReusableCell(withIdentifier: Constants.ReuseIdentifiers.channelCell, for: indexPath) as? ChannelCell else { return UITableViewCell() }
-        let channel = self.commData.channels[indexPath.row]
+        let channel = self.comms.channels[indexPath.row]
         cell.configureCell(channel: channel)
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let channel = self.commData.channels[indexPath.row]
-        self.commData.selectedChannel = channel
+        let channel = self.comms.channels[indexPath.row]
+        self.comms.selectedChannel = channel
         NotificationCenter.default.post(name: Constants.Notifications.channelSelected, object: nil)
         self.revealViewController()?.revealToggle(animated: true)
     }
