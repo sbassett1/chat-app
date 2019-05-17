@@ -29,6 +29,16 @@ extension String {
                        alpha: CGFloat((components[3] as NSString).floatValue))
     }
 
+    var asTransparentUIColor: UIColor {
+        guard self != "" else { return UIColor.clear }
+        let componentsString = self.replacingOccurrences(of: "[", with: "").replacingOccurrences(of: "]", with: "")
+        let components = componentsString.components(separatedBy: ", ")
+        return UIColor(red: CGFloat((components[0] as NSString).floatValue),
+                       green: CGFloat((components[1] as NSString).floatValue),
+                       blue: CGFloat((components[2] as NSString).floatValue),
+                       alpha: 0.2)
+    }
+
 }
 
 extension UIView {

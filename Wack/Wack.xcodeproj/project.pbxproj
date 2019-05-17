@@ -11,6 +11,7 @@
 		55159EFC228A0F7B0060B92F /* ChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55159EFB228A0F7B0060B92F /* ChannelViewController.swift */; };
 		551D758F228A1AA20081D999 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 551D758E228A1AA20081D999 /* SWRevealViewController.m */; };
 		551D7591228A1AC40081D999 /* Wack-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 551D7590228A1AC40081D999 /* Wack-Bridging-Header.h */; };
+		5521F30E228F085F00D9607E /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5521F30D228F085F00D9607E /* MessageCell.swift */; };
 		552C372C228A033400E0EE92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C372B228A033400E0EE92 /* AppDelegate.swift */; };
 		552C3731228A033400E0EE92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552C372F228A033400E0EE92 /* Main.storyboard */; };
 		552C3733228A033500E0EE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552C3732228A033500E0EE92 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		551D758D228A1AA20081D999 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		551D758E228A1AA20081D999 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		551D7590228A1AC40081D999 /* Wack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wack-Bridging-Header.h"; sourceTree = "<group>"; };
+		5521F30D228F085F00D9607E /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		552C3728228A033400E0EE92 /* Wack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		552C372B228A033400E0EE92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		552C3730228A033400E0EE92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				55A3E152228C7F7A00AA5B07 /* AvatarCell.swift */,
 				55E5C6B8228DB2EE00ED6F79 /* ChannelCell.swift */,
+				5521F30D228F085F00D9607E /* MessageCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				55B0B858228CD469000C9C3F /* ProfileViewController.swift in Sources */,
 				55E5C6B9228DB2EE00ED6F79 /* ChannelCell.swift in Sources */,
 				55A3E14F228C64D100AA5B07 /* UserDataService.swift in Sources */,
+				5521F30E228F085F00D9607E /* MessageCell.swift in Sources */,
 				557F840D228B702300F1E37E /* RoundedButton.swift in Sources */,
 				557F8408228B2B5000F1E37E /* CreateAccountViewController.swift in Sources */,
 				55E5C6C3228DFD4C00ED6F79 /* SocketService.swift in Sources */,

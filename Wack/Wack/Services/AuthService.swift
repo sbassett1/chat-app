@@ -147,15 +147,18 @@ class AuthService {
     // MARK: Private Functions
 
     private func setUserInfo(data: Data) {
+
+        // Fix this to use swift 4 method of json decoding
+
         let json = JSON(data: data)
         let color = json["avatarColor"].stringValue
-        let avatarName = json["avatarName"].stringValue
+        let avatar = json["avatarName"].stringValue
         let email = json["email"].stringValue
         let name = json["name"].stringValue
         let id = json["_id"].stringValue
 
         UserDataService.shared.setUserData(color: color,
-                                           avatarName: avatarName,
+                                           avatar: avatar,
                                            email: email,
                                            name: name,
                                            id: id)

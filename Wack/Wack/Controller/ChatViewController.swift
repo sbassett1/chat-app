@@ -15,11 +15,15 @@ class ChatViewController: UIViewController {
     @IBOutlet private var menuButton: UIButton!
     @IBOutlet private var channelNameLabel: UILabel!
     @IBOutlet private var messageTextField: UITextField!
+    @IBOutlet private var chatTableView: UITableView!
+    @IBOutlet private var sendMessageButton: UIButton!
 
     // MARK: Variables
 
+    var isTyping = false
     let user = AuthService.shared
     let comms = MessageService.shared
+    let socket = SocketService.shared
 
     var isLoggedIn: Bool {
         return self.user.isLoggedIn
@@ -29,9 +33,20 @@ class ChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.chatTableView.delegate = self
+        self.chatTableView.dataSource = self
+        self.messageTextField.delegate = self
+
+        self.chatTableView.estimatedRowHeight = 80
+        self.chatTableView.rowHeight = UITableView.automaticDimension
+        self.sendMessageButton.isHidden = true
+
         self.addGestures()
         self.registerNotifications()
         self.view.bindToKeyboard()
+
+        self.socketGetMessage()
     }
 
     // MARK: Actions
@@ -40,15 +55,19 @@ class ChatViewController: UIViewController {
         if self.isLoggedIn {
             guard let channelId = self.comms.selectedChannel?._id,
                 let message = self.messageTextField.text else { return }
-            SocketService.shared.addMessage(messageBody: message,
-                                            userId: UserDataService.shared.id,
-                                            channelId: channelId) { success in
-                                                if success {
-                                                    self.messageTextField.text = ""
-                                                    self.messageTextField.resignFirstResponder()
-                                                }
+            self.socket.addMessage(messageBody: message,
+                                   userId: UserDataService.shared.id,
+                                   channelId: channelId) { success in
+                                    if success {
+                                        self.messageTextField.text = ""
+//                                        self.messageTextField.resignFirstResponder()
+                                    }
             }
         }
+    }
+
+    @IBAction func messageTextFieldEditing(_ sender: Any) {
+        self.sendMessageButton.isHidden = self.messageTextField.text?.isEmpty ?? true
     }
 
     // MARK: Private Functions
@@ -71,6 +90,7 @@ class ChatViewController: UIViewController {
             self.channelNameLabel.text = "Wack"
         } else {
             self.channelNameLabel.text = "Please Log In"
+            self.chatTableView.reloadData()
         }
     }
 
@@ -105,7 +125,7 @@ class ChatViewController: UIViewController {
         guard let channelId = self.comms.selectedChannel?._id else { return }
         self.comms.findAllMessagesForChannel(channelId: channelId) { success in
             if success {
-
+                self.chatTableView.reloadData()
             }
         }
     }
@@ -127,6 +147,47 @@ class ChatViewController: UIViewController {
                                  selector: #selector(self.channelSelected),
                                  name: Constants.Notifications.channelSelected,
                                  object: nil)
+    }
+
+    private func socketGetMessage() {
+        self.socket.getChatMessage { success in
+            if success {
+                self.chatTableView.reloadData()
+                if !self.comms.messages.isEmpty {
+                    let lastIndex = IndexPath(row: self.comms.messages.count - 1, section: 0)
+                    self.chatTableView.scrollToRow(at: lastIndex, at: .bottom, animated: true)
+                }
+            }
+        }
+    }
+
+}
+
+extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.comms.messages.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.ReuseIdentifiers.messageCell,
+                                                       for: indexPath) as? MessageCell else { return UITableViewCell() }
+        let message = self.comms.messages[indexPath.row]
+        cell.configureCell(message: message)
+        return cell
+    }
+
+}
+
+extension ChatViewController: UITextFieldDelegate {
+
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.sendMessageButtonTapped(self)
+        return true
     }
 
 }

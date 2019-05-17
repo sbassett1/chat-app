@@ -21,7 +21,7 @@ class CreateAccountViewController: UIViewController {
 
     // MARK: Variables
 
-    var avatarName = "profileDefault"
+    var avatar = "profileDefault"
     var color = "[0.5, 0.5, 0.5, 1]"
     var backgroundColor: UIColor?
     let user = UserDataService.shared
@@ -36,10 +36,10 @@ class CreateAccountViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if self.user.avatarName != "" {
-            self.avatarName = self.user.avatarName
-            self.userImage.image = UIImage(named: self.avatarName)
-            if self.avatarName.contains("light") && self.backgroundColor == nil {
+        if self.user.avatar != "" {
+            self.avatar = self.user.avatar
+            self.userImage.image = UIImage(named: self.avatar)
+            if self.avatar.contains("light") && self.backgroundColor == nil {
                 self.userImage.backgroundColor = UIColor.lightGray
             }
         }
@@ -70,7 +70,7 @@ class CreateAccountViewController: UIViewController {
                         self.auth.setupUser(name: username,
                                             email: email,
                                             color: self.color,
-                                            avatarName: self.avatarName) { success in
+                                            avatarName: self.avatar) { success in
                                                 if success {
                                                     self.loadingSpinner.isHidden = true
                                                     self.loadingSpinner.stopAnimating()
