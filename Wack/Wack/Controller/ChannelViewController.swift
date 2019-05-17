@@ -76,6 +76,7 @@ class ChannelViewController: UIViewController {
     private func setupView() {
         self.channelTableView.delegate = self
         self.channelTableView.dataSource = self
+        self.channelTableView.rowHeight = 44
 
         self.revealViewController()?.rearViewRevealWidth = self.view.frame.width - 60
     }
@@ -102,7 +103,7 @@ class ChannelViewController: UIViewController {
     private func setupUserInfo() {
         if self.isLoggedIn {
             self.loginButton.setTitle(self.user.name, for: .normal)
-            self.userImageView.image = UIImage(named: self.user.avatarName)
+            self.userImageView.image = UIImage(named: self.user.avatar)
             self.userImageView.backgroundColor = self.user.color.asUIColor
         } else {
             self.loginButton.setTitle("Login", for: .normal)
@@ -133,7 +134,8 @@ extension ChannelViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = self.channelTableView.dequeueReusableCell(withIdentifier: Constants.ReuseIdentifiers.channelCell, for: indexPath) as? ChannelCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.ReuseIdentifiers.channelCell,
+                                                       for: indexPath) as? ChannelCell else { return UITableViewCell() }
         let channel = self.comms.channels[indexPath.row]
         cell.configureCell(channel: channel)
         return cell

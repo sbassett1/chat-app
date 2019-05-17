@@ -67,6 +67,7 @@ public struct Constants {
     public struct ReuseIdentifiers {
         public static let avatarCell = "avatarCell"
         public static let channelCell = "channelCell"
+        public static let messageCell = "messageCell"
     }
 
     public struct Colors {

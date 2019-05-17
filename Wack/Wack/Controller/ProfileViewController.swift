@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
     // MARK: Private Functions
 
     private func setupView() {
-        self.profileImageView.image = UIImage(named: self.user.avatarName)
+        self.profileImageView.image = UIImage(named: self.user.avatar)
         self.profileImageView.backgroundColor = self.user.color.asUIColor
         self.usernameLabel.text = self.user.name
         self.emailLabel.text = self.user.email
