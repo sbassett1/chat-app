@@ -33,5 +33,4 @@ class ChannelCell: UITableViewCell {
             self.channelLabel.font = UIFont(name: Constants.Fonts.bold, size: 22)
         }
     }
-
 }
