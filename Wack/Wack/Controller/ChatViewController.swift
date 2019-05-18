@@ -160,7 +160,9 @@ class ChatViewController: UIViewController {
 
     private func adjustTableBottom() {
         let lastIndex = IndexPath(row: self.comms.messages.count - 1, section: 0)
-        self.chatTableView.scrollToRow(at: lastIndex, at: .bottom, animated: false)
+        if lastIndex.row  > 0 {
+            self.chatTableView.scrollToRow(at: lastIndex, at: .bottom, animated: false)
+        }
     }
 
     private func socketGetMessage() {
