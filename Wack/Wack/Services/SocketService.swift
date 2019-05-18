@@ -39,12 +39,12 @@ class SocketService: NSObject {
     func addChannel(channelName: String,
                     channelDescription: String,
                     completion: @escaping BoolCallBack) {
-        self.socket.emit("newChannel", channelName, channelDescription)
+        self.socket.emit(Constants.Socket.newChannel, channelName, channelDescription)
         completion(true)
     }
 
     func getChannel(completion: @escaping BoolCallBack) {
-        self.socket.on("channelCreated") { dataArray, _ in
+        self.socket.on(Constants.Socket.channelCreated) { dataArray, _ in
             guard let name = dataArray[0] as? String,
                 let description = dataArray[1] as? String,
                 let id = dataArray[2] as? String else { return }
@@ -60,7 +60,7 @@ class SocketService: NSObject {
                     channelId: String,
                     completion: @escaping BoolCallBack) {
         let user = UserDataService.shared
-        self.socket.emit("newMessage",
+        self.socket.emit(Constants.Socket.newMessage,
                          messageBody,
                          userId,
                          channelId,
@@ -70,8 +70,8 @@ class SocketService: NSObject {
         completion(true)
     }
 
-    func getChatMessage(completion: @escaping BoolCallBack) {
-        self.socket.on("messageCreated") { dataArray, _ in
+    func getChatMessage(completion: @escaping MessageCallBack) {
+        self.socket.on(Constants.Socket.messageCreated) { dataArray, _ in
             guard let message = dataArray[0] as? String,
                 let channelId = dataArray[2] as? String,
                 let name = dataArray[3] as? String,
@@ -80,26 +80,22 @@ class SocketService: NSObject {
                 let id = dataArray[6] as? String,
                 let timeStamp = dataArray[2] as? String else { return }
 
-            if channelId == self.comms.selectedChannel?._id && AuthService.shared.isLoggedIn {
-                let newMessage = Message(_id: id,
-                                         messageBody: message,
-                                         userId: nil,
-                                         channelId: channelId,
-                                         userName: name,
-                                         userAvatar: avatar,
-                                         userAvatarColor: color,
-                                         __v: nil,
-                                         timeStamp: timeStamp)
-                self.comms.messages.append(newMessage)
-                completion(true)
-            } else {
-                completion(false)
-            }
+            let newMessage = Message(_id: id,
+                                     messageBody: message,
+                                     userId: nil,
+                                     channelId: channelId,
+                                     userName: name,
+                                     userAvatar: avatar,
+                                     userAvatarColor: color,
+                                     __v: nil,
+                                     timeStamp: timeStamp)
+
+            completion(newMessage)
         }
     }
 
     func getTypingUsers(_ completion: @escaping DictCallBack) {
-        self.socket.on("userTypingUpdate") { dataArray, _ in
+        self.socket.on(Constants.Socket.userTyping) { dataArray, _ in
             guard let typingUsers = dataArray.first as? [String: String] else { return }
             completion(typingUsers)
         }
